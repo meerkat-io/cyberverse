@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://044a82wcmmrf"]
+
+[ext_resource type="Texture2D" uid="uid://3gaa6jtnoh0s" path="res://assets/sprites/components/engine/engine_level_1.png" id="1_lkovm"]
+[ext_resource type="Script" uid="uid://bd8b5vfmvn8y1" path="res://scenes/Ui/Inventory/inventory.gd" id="1_qki63"]
+[ext_resource type="Texture2D" uid="uid://bdxigg0qhiki5" path="res://assets/sprites/components/energy_cell/energy_cell_level_1.png" id="2_qki63"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkovm"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+shadow_size = 16
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 586.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qki63")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -569.0
+offset_right = 3.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 2282.0
+offset_top = 324.0
+offset_right = 3250.0
+offset_bottom = 1492.0
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("2_qki63")
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("1_lkovm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1339, 1088)
+zoom = Vector2(0.3, 0.3)
+
+[node name="Button4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 2282.0
+offset_top = 75.0
+offset_right = 3250.0
+offset_bottom = 264.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_lkovm")
+text = "Inventory"

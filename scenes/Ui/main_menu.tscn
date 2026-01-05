@@ -1,13 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://18psybjg8yty"]
+[gd_scene load_steps=8 format=3 uid="uid://18psybjg8yty"]
 
-[ext_resource type="Texture2D" uid="uid://cuve14nufcnbj" path="res://—Pngtree—ancient abstract gear steampunk_1440793.png" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://dr5qs2bdvqyvl" path="res://game/main_menu.gd" id="1_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://cuve14nufcnbj" path="res://assets/sprites/components/—Pngtree—ancient abstract gear steampunk_1440793.png" id="1_l6cm7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekxnf"]
 texture = ExtResource("1_l6cm7")
 modulate_color = Color(0.7241414, 0.7241415, 0.7241414, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vue75"]
-bg_color = Color(0.99116415, 0.99116427, 0.99116415, 1)
+bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -15,7 +16,7 @@ corner_radius_bottom_left = 16
 shadow_size = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6cm7"]
-bg_color = Color(0.99116415, 0.99116427, 0.99116415, 1)
+bg_color = Color(0.08505545, 0.91213936, 0.9131708, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -37,31 +38,52 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = 1.0
+offset_left = 9.0
+offset_top = 16.0
+offset_right = 8.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ekxnf")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 2657.0
+offset_bottom = 1481.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ekxnf")
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.72700006
+anchor_right = 0.5
+anchor_bottom = 0.72700006
+offset_left = 899.5
+offset_top = -92.09604
+offset_right = 1623.5
+offset_bottom = -4.096039
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "Cyberverse - Adventure"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -199.5
-offset_top = -15.0
-offset_right = 199.5
-offset_bottom = 218.0
+anchor_right = 0.57100004
+anchor_bottom = 0.60200006
+offset_left = 1073.5
+offset_top = 749.0
+offset_right = 2271.7788
+offset_bottom = 1504.9039
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 11
@@ -82,6 +104,22 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_vue75")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_l6cm7")
 text = "start game"
 
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l6cm7")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_l6cm7")
+text = "options"
+
 [node name="Button2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -99,34 +137,10 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_l6cm7")
 text = "Exit
 "
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_vue75")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_vue75")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_l6cm7")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_vue75")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_vue75")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_vue75")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_vue75")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_l6cm7")
-text = "options"
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1924, 1073)
+zoom = Vector2(0.3, 0.3)
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.518
-anchor_right = 0.5
-anchor_bottom = 0.518
-offset_left = -43.5
-offset_top = -148.664
-offset_right = 43.5
-offset_bottom = -125.664
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 64
-text = "Cyberverse - Adventure"
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_option_3_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_exit_2_pressed"]

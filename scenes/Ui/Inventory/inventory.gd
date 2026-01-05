@@ -1,0 +1,3 @@
+extends Control
+
+ # standardmäßig geschlossen
