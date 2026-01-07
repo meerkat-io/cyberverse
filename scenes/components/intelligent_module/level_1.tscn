@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b514ipaxxstri"]
+
+[ext_resource type="Texture2D" uid="uid://dks8yod4ufa5u" path="res://assets/sprites/components/intelligent_module/level_1.png" id="1_qnwoi"]
+
+[node name="IntelligentModule" type="Sprite2D"]
+texture = ExtResource("1_qnwoi")

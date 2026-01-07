@@ -1,13 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://ydpsw6gl7aw8"]
+[gd_scene load_steps=9 format=3 uid="uid://ydpsw6gl7aw8"]
 
 [ext_resource type="Texture2D" uid="uid://0ipcmlxqvnv8" path="res://assets/sprites/components/chassis/level_1.png" id="1_5q5id"]
 [ext_resource type="PackedScene" uid="uid://dm4v1blsned1v" path="res://scenes/components/chassis/level_1_front_wheel.tscn" id="2_co4xd"]
 [ext_resource type="PackedScene" uid="uid://gq6mv3r2jqs1" path="res://scenes/components/chassis/level_1_rear_wheel.tscn" id="2_d7qkh"]
+[ext_resource type="PackedScene" uid="uid://d38d043t3m8or" path="res://scenes/components/engine/level_1.tscn" id="4_cevks"]
+[ext_resource type="PackedScene" uid="uid://b514ipaxxstri" path="res://scenes/components/intelligent_module/level_1.tscn" id="5_afvvv"]
+[ext_resource type="PackedScene" uid="uid://65sj78xl3i44" path="res://scenes/components/energy_cell/level_1.tscn" id="6_getyh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7qkh"]
 size = Vector2(469, 641)
 
+[sub_resource type="Theme" id="Theme_cevks"]
+
 [node name="Chassis" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(3.5, -3.5)
+shape = SubResource("RectangleShape2D_d7qkh")
 
 [node name="RearLeftWheel" parent="." instance=ExtResource("2_d7qkh")]
 position = Vector2(-186, 217)
@@ -26,6 +36,20 @@ rotation = -3.1415925
 [node name="Chassis" type="Sprite2D" parent="."]
 texture = ExtResource("1_5q5id")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3.5, -3.5)
-shape = SubResource("RectangleShape2D_d7qkh")
+[node name="Engine" parent="." instance=ExtResource("4_cevks")]
+position = Vector2(2, 209)
+
+[node name="IntelligentModule" parent="." instance=ExtResource("5_afvvv")]
+position = Vector2(1, 52)
+
+[node name="EnergyCell" parent="." instance=ExtResource("6_getyh")]
+position = Vector2(0, -68)
+
+[node name="GeneralSlot" type="ColorRect" parent="."]
+visible = false
+offset_left = -130.0
+offset_top = -3.0
+offset_right = -2.0
+offset_bottom = 125.0
+theme = SubResource("Theme_cevks")
+color = Color(0.26670146, 0.4848584, 1, 0.5019608)
