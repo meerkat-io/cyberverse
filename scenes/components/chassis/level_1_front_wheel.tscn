@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm4v1blsned1v"]
+
+[ext_resource type="Texture2D" uid="uid://18v1hqu0wosv" path="res://assets/sprites/components/chassis/level_1_wheel_bridge.png" id="1_a3ubs"]
+[ext_resource type="PackedScene" uid="uid://gq6mv3r2jqs1" path="res://scenes/components/chassis/level_1_rear_wheel.tscn" id="2_eumqj"]
+
+[node name="FrontWheel" type="Node2D"]
+
+[node name="WheelBridge" type="Sprite2D" parent="."]
+scale = Vector2(-1, -1)
+texture = ExtResource("1_a3ubs")
+
+[node name="Wheel" parent="." instance=ExtResource("2_eumqj")]
+position = Vector2(-58, 0)
+frame_progress = 0.32857117

@@ -141,5 +141,5 @@ animations = [{
 
 [node name="Engine" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_wjrgy")
-animation = &"forward_run"
-frame_progress = 0.3664001
+animation = &"idle"
+autoplay = "idle"
