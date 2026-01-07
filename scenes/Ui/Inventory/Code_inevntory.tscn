@@ -1,0 +1,132 @@
+[gd_scene load_steps=11 format=3 uid="uid://b2lany1jrrokb"]
+
+[ext_resource type="Script" uid="uid://834klrfuaud1" path="res://scenes/Ui/Inventory/code_inevntory.gd" id="1_rt0ts"]
+[ext_resource type="Texture2D" uid="uid://beolkrhfqw0yy" path="res://assets/sprites/components/home.png" id="2_k55t7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rt0ts"]
+bg_color = Color(0.17254902, 0.24705882, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkgc0"]
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k55t7"]
+bg_color = Color(0, 0.6862745, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6rrlp"]
+bg_color = Color(0.21481445, 0.2055602, 0.82489896, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ulerk"]
+bg_color = Color(0.11898873, 0.71352553, 0.3824477, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pswrr"]
+bg_color = Color(0.6034638, 0.6335407, 0.16345575, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hlfbg"]
+bg_color = Color(0.97760683, 0.35292724, 0.42620516, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rt0ts"]
+
+[node name="CodeInevntory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rt0ts")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 82.0
+offset_right = 413.0
+offset_bottom = 645.0
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_rt0ts")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_qkgc0")
+text = "Code_1"
+
+[node name="Button4" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+theme_override_styles/normal = SubResource("StyleBoxFlat_k55t7")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_qkgc0")
+text = "if ...... :
+	pass
+"
+
+[node name="Button6" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+theme_override_styles/normal = SubResource("StyleBoxFlat_6rrlp")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_qkgc0")
+text = "drehe_un(grad)"
+
+[node name="Button9" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+theme_override_styles/normal = SubResource("StyleBoxFlat_ulerk")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_qkgc0")
+text = "true
+"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+theme_override_styles/normal = SubResource("StyleBoxFlat_pswrr")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_qkgc0")
+text = "for _ in range(x):"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_qkgc0")
+text = "while true:"
+
+[node name="Button5" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_qkgc0")
+text = "fg"
+
+[node name="Button7" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_qkgc0")
+text = "gehe(schritt)"
+
+[node name="Button8" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+theme_override_styles/normal = SubResource("StyleBoxFlat_hlfbg")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_qkgc0")
+text = "check_collision():"
+
+[node name="home" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1045.0
+offset_right = 1152.0
+offset_bottom = 114.0
+icon = ExtResource("2_k55t7")
+expand_icon = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0018410616, 0.0018410712, 0.0018410641, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_rt0ts")
+
+[connection signal="pressed" from="home" to="." method="_on_home_pressed"]
