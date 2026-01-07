@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxplbukyawxee"
-path="res://.godot/imported/codeicon2.png-080d502582be799dad0643f02815fdeb.ctex"
+uid="uid://b4v18ykcuk5pu"
+path="res://.godot/imported/level_1_large.png-0dc44d1657b8c7ef76b975f0f9e02a43.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/components/codeicon2.png"
-dest_files=["res://.godot/imported/codeicon2.png-080d502582be799dad0643f02815fdeb.ctex"]
+source_file="res://assets/sprites/components/chassis/level_1_large.png"
+dest_files=["res://.godot/imported/level_1_large.png-0dc44d1657b8c7ef76b975f0f9e02a43.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxplbukyawxee"
-path="res://.godot/imported/codeicon2.png-080d502582be799dad0643f02815fdeb.ctex"
+uid="uid://18v1hqu0wosv"
+path="res://.godot/imported/level_1_wheel_bridge.png-683296a56b1766e30b11e6a266452b79.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/components/codeicon2.png"
-dest_files=["res://.godot/imported/codeicon2.png-080d502582be799dad0643f02815fdeb.ctex"]
+source_file="res://assets/sprites/components/chassis/level_1_wheel_bridge.png"
+dest_files=["res://.godot/imported/level_1_wheel_bridge.png-683296a56b1766e30b11e6a266452b79.ctex"]
 
 [params]
 

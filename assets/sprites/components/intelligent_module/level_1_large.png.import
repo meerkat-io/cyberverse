@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dccoxkob8lkdy"
-path="res://.godot/imported/energy_cell_level_1.png-b783df791b89032cde92c9cac0a63171.ctex"
+uid="uid://00dqumqtjlep"
+path="res://.godot/imported/level_1_large.png-b75238f36cc517bdc7102bc0ef7086db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/components/energy_cell/energy_cell_level_1.png"
-dest_files=["res://.godot/imported/energy_cell_level_1.png-b783df791b89032cde92c9cac0a63171.ctex"]
+source_file="res://assets/sprites/components/intelligent_module/level_1_large.png"
+dest_files=["res://.godot/imported/level_1_large.png-b75238f36cc517bdc7102bc0ef7086db.ctex"]
 
 [params]
 

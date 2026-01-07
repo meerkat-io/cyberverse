@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxplbukyawxee"
-path="res://.godot/imported/codeicon2.png-080d502582be799dad0643f02815fdeb.ctex"
+uid="uid://oqx04wfwx247"
+path="res://.godot/imported/level_1_wheel.png-d0c74be309d4f09c45422976db8df8cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/components/codeicon2.png"
-dest_files=["res://.godot/imported/codeicon2.png-080d502582be799dad0643f02815fdeb.ctex"]
+source_file="res://assets/sprites/components/chassis/level_1_wheel.png"
+dest_files=["res://.godot/imported/level_1_wheel.png-d0c74be309d4f09c45422976db8df8cc.ctex"]
 
 [params]
 

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://ydpsw6gl7aw8"]
+
+[ext_resource type="Texture2D" uid="uid://0ipcmlxqvnv8" path="res://assets/sprites/components/chassis/level_1.png" id="1_5q5id"]
+[ext_resource type="PackedScene" uid="uid://dm4v1blsned1v" path="res://scenes/components/chassis/level_1_front_wheel.tscn" id="2_co4xd"]
+[ext_resource type="PackedScene" uid="uid://gq6mv3r2jqs1" path="res://scenes/components/chassis/level_1_rear_wheel.tscn" id="2_d7qkh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7qkh"]
+size = Vector2(469, 641)
+
+[node name="Chassis" type="CharacterBody2D"]
+
+[node name="RearLeftWheel" parent="." instance=ExtResource("2_d7qkh")]
+position = Vector2(-186, 217)
+
+[node name="RearRightWheel" parent="." instance=ExtResource("2_d7qkh")]
+position = Vector2(190, 218)
+rotation = -3.1415925
+
+[node name="FrontLeftWheel" parent="." instance=ExtResource("2_co4xd")]
+position = Vector2(-115, -213)
+
+[node name="FrontRightWheel" parent="." instance=ExtResource("2_co4xd")]
+position = Vector2(120, -214)
+rotation = -3.1415925
+
+[node name="Chassis" type="Sprite2D" parent="."]
+texture = ExtResource("1_5q5id")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.5, -3.5)
+shape = SubResource("RectangleShape2D_d7qkh")
