@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cuve14nufcnbj"
-path="res://.godot/imported/—Pngtree—ancient abstract gear steampunk_1440793.png-b7b80cd421a5c7aa6bb3d6dab936c635.ctex"
+path="res://.godot/imported/—Pngtree—ancient abstract gear steampunk_1440793.png-94452b842038f2e700bf575164667c81.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://—Pngtree—ancient abstract gear steampunk_1440793.png"
-dest_files=["res://.godot/imported/—Pngtree—ancient abstract gear steampunk_1440793.png-b7b80cd421a5c7aa6bb3d6dab936c635.ctex"]
+source_file="res://assets/sprites/components/—Pngtree—ancient abstract gear steampunk_1440793.png"
+dest_files=["res://.godot/imported/—Pngtree—ancient abstract gear steampunk_1440793.png-94452b842038f2e700bf575164667c81.ctex"]
 
 [params]
 
