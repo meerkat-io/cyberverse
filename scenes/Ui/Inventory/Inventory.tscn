@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://044a82wcmmrf"]
+[gd_scene load_steps=6 format=3 uid="uid://044a82wcmmrf"]
 
-[ext_resource type="Texture2D" uid="uid://3gaa6jtnoh0s" path="res://assets/sprites/components/engine/engine_level_1.png" id="1_lkovm"]
 [ext_resource type="Script" uid="uid://bd8b5vfmvn8y1" path="res://scenes/Ui/Inventory/inventory.gd" id="1_qki63"]
-[ext_resource type="Texture2D" uid="uid://bdxigg0qhiki5" path="res://assets/sprites/components/energy_cell/energy_cell_level_1.png" id="2_qki63"]
+[ext_resource type="Texture2D" uid="uid://dccoxkob8lkdy" path="res://assets/sprites/components/energy_cell/energy_cell_level_1.png" id="2_qki63"]
+[ext_resource type="Texture2D" uid="uid://bc42fst01lbka" path="res://assets/sprites/components/engine/level_1_large.png" id="3_qki63"]
+[ext_resource type="Texture2D" uid="uid://beolkrhfqw0yy" path="res://assets/sprites/components/home.png" id="4_y6x41"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkovm"]
 bg_color = Color(1, 1, 1, 1)
@@ -47,10 +48,10 @@ icon = ExtResource("2_qki63")
 
 [node name="Button3" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+icon = ExtResource("3_qki63")
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-icon = ExtResource("1_lkovm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1339, 1088)
@@ -66,3 +67,13 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxFlat_lkovm")
 text = "Inventory"
+
+[node name="Home" type="Button" parent="."]
+layout_mode = 0
+offset_left = -570.0
+offset_right = -231.0
+offset_bottom = 324.0
+icon = ExtResource("4_y6x41")
+expand_icon = true
+
+[connection signal="pressed" from="Home" to="." method="_on_home_pressed"]
