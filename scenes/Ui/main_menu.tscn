@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dr5qs2bdvqyvl" path="res://game/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://cuve14nufcnbj" path="res://assets/sprites/components/—Pngtree—ancient abstract gear steampunk_1440793.png" id="1_l6cm7"]
 [ext_resource type="Texture2D" uid="uid://4ygswrgi1iba" path="res://assets/sprites/components/settings-icon.png" id="3_k81t8"]
-[ext_resource type="Texture2D" uid="uid://d34hqk4a41e01" path="res://assets/sprites/components/codeicon2.png" id="4_y4mj2"]
+[ext_resource type="Texture2D" uid="uid://bxplbukyawxee" path="res://assets/sprites/components/codeicon2.png" id="4_y4mj2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekxnf"]
 texture = ExtResource("1_l6cm7")
