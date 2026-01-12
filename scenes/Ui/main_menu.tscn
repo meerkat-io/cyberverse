@@ -1,16 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://blhftglns38mo"]
+[gd_scene load_steps=10 format=3 uid="uid://b4vyct38ri71s"]
 
-[ext_resource type="Script" uid="uid://dr5qs2bdvqyvl" path="res://scripts/ui/game_menu.gd" id="1_g8oa6"]
-[ext_resource type="Texture2D" uid="uid://dss8dvq6encnc" path="res://assets/sprites/ui/background.jpg" id="2_3rbob"]
-[ext_resource type="Texture2D" uid="uid://ct6c8uhmfcfxo" path="res://assets/sprites/ui/panel_bg.png" id="3_vtvlb"]
-[ext_resource type="Texture2D" uid="uid://dmin2rp65cvd3" path="res://assets/sprites/ui/title.png" id="5_g8oa6"]
+[ext_resource type="Script" path="res://game/main_menu.gd" id="1_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://cuve14nufcnbj" path="res://assets/sprites/components/—Pngtree—ancient abstract gear steampunk_1440793.png" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://4ygswrgi1iba" path="res://assets/sprites/components/settings-icon.png" id="3_k81t8"]
+[ext_resource type="Texture2D" uid="uid://bxplbukyawxee" path="res://assets/sprites/components/codeicon2.png" id="4_y4mj2"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g8oa6"]
-texture = ExtResource("3_vtvlb")
-texture_margin_left = 106.0
-texture_margin_top = 162.0
-texture_margin_right = 106.0
-texture_margin_bottom = 162.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekxnf"]
+texture = ExtResource("1_l6cm7")
+modulate_color = Color(0.7241414, 0.7241415, 0.7241414, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vue75"]
 bg_color = Color(1, 1, 1, 1)
@@ -38,53 +35,67 @@ shadow_size = 16
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l6cm7"]
 
-[sub_resource type="Theme" id="Theme_uhagc"]
-
-[node name="GameMenu" type="Control"]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1.0
+offset_left = 9.0
+offset_top = 16.0
+offset_right = 8.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_g8oa6")
+script = ExtResource("1_ekxnf")
 
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("2_3rbob")
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2657.0
+offset_bottom = 1481.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ekxnf")
 
-[node name="Menu" type="Panel" parent="."]
+[node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.544
+anchor_top = 0.72700006
 anchor_right = 0.5
-anchor_bottom = 0.557
-offset_left = -333.5
-offset_top = -133.52002
-offset_right = 334.75
-offset_bottom = 390.5
+anchor_bottom = 0.72700006
+offset_left = -213.5
+offset_top = -207.09604
+offset_right = 510.5
+offset_bottom = -119.09604
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_g8oa6")
+scale = Vector2(4, 4)
+theme_override_font_sizes/font_size = 64
+text = "Cyberverse - Adventure"
 
-[node name="Button2" type="Button" parent="Menu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.23
-anchor_top = 0.666
-anchor_right = 1.23
-anchor_bottom = 0.666
-offset_left = -760.9475
-offset_top = -3.3479614
-offset_right = -209.94751
-offset_bottom = 91.65204
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 157.0
+offset_top = 237.0
+offset_right = 1429.0
+offset_bottom = 912.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 11
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = SubResource("StyleBoxFlat_vue75")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_vue75")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_l6cm7")
@@ -94,24 +105,13 @@ theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_vue75")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_vue75")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_vue75")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_l6cm7")
-text = "Exit
-"
+text = "start game"
 
-[node name="Button3" type="Button" parent="Menu"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.569
-anchor_top = 0.537
-anchor_right = -0.569
-anchor_bottom = 0.537
-offset_left = 441.23425
-offset_top = -72.93823
-offset_right = 992.23425
-offset_bottom = 33.061768
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
 size_flags_vertical = 3
-theme = SubResource("Theme_uhagc")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = SubResource("StyleBoxFlat_vue75")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_vue75")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_l6cm7")
@@ -124,19 +124,11 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_l6cm7")
 text = "Arena
 "
 
-[node name="Button" type="Button" parent="Menu"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.11800001
-anchor_right = 1.0
-anchor_bottom = 0.209
-offset_left = -17.85353
-offset_top = 86.0
-offset_right = -56.152527
-offset_bottom = 77.545456
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = SubResource("StyleBoxFlat_vue75")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_vue75")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_l6cm7")
@@ -146,20 +138,30 @@ theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_vue75")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_vue75")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_vue75")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_l6cm7")
-text = "start game"
+text = "Exit
+"
 
-[node name="Title" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -384.5
-offset_top = 126.0
-offset_right = 383.5
-offset_bottom = 382.0
-grow_horizontal = 2
-texture = ExtResource("5_g8oa6")
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1924, 1073)
+zoom = Vector2(0.3, 0.3)
 
-[connection signal="pressed" from="Menu/Button2" to="." method="_on_exit_2_pressed"]
-[connection signal="pressed" from="Menu/Button3" to="." method="_on_option_3_pressed"]
-[connection signal="pressed" from="Menu/Button" to="." method="_on_start_pressed"]
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 3543.0
+offset_right = 3807.0
+offset_bottom = 264.0
+icon = ExtResource("3_k81t8")
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_top = 885.0
+offset_right = 235.0
+offset_bottom = 1149.0
+icon = ExtResource("4_y4mj2")
+expand_icon = true
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_option_3_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_exit_2_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_inventory_2_pressed"]
