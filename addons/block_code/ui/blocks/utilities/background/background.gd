@@ -241,7 +241,7 @@ func _draw():
 				shape = _get_pointy_value_shape()
 			else:
 				shape = _get_round_value_shape()
-			fill_polygon = shape
+			 = shape
 			stroke_polygon = shape
 		Types.BlockType.CONTROL:
 			if control_part == ControlPart.TOP:

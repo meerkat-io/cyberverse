@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b80j8ho2cx8ad"]
+
+[ext_resource type="Texture2D" uid="uid://bpj2elee155v4" path="res://code_blocks/ui/blocks/level_2/statement.png" id="1_xv3wm"]
+
+[node name="StatementBlock" type="MarginContainer"]
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_xv3wm")
