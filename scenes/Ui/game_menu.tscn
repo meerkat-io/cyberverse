@@ -153,11 +153,20 @@ anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.652
 anchor_right = 0.5
+<<<<<<< HEAD
 anchor_bottom = 0.652
+=======
+anchor_bottom = 0.557
+offset_left = -333.5
+offset_top = -133.52002
+offset_right = 334.75
+offset_bottom = 390.5
+>>>>>>> 373773d9af95cf34e5307aec86d1918f24a20e04
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_g8oa6")
 
+<<<<<<< HEAD
 [node name="Buttons" type="VBoxContainer" parent="Menu"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -176,6 +185,30 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxTexture_ioip1")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_1rrd4")
 theme_override_styles/hover = SubResource("StyleBoxTexture_to44m")
+=======
+[node name="Button2" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.23
+anchor_top = 0.666
+anchor_right = 1.23
+anchor_bottom = 0.666
+offset_left = -760.9475
+offset_top = -3.3479614
+offset_right = -209.94751
+offset_bottom = 91.65204
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l6cm7")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_vue75")
+>>>>>>> 373773d9af95cf34e5307aec86d1918f24a20e04
 theme_override_styles/focus = SubResource("StyleBoxEmpty_l6cm7")
 text = "Start"
 
@@ -208,6 +241,60 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_1djrs")
 text = "Exit
 "
 
+<<<<<<< HEAD
+=======
+[node name="Button3" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.569
+anchor_top = 0.537
+anchor_right = -0.569
+anchor_bottom = 0.537
+offset_left = 441.23425
+offset_top = -72.93823
+offset_right = 992.23425
+offset_bottom = 33.061768
+size_flags_vertical = 3
+theme = SubResource("Theme_uhagc")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l6cm7")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_l6cm7")
+text = "Arena
+"
+
+[node name="Button" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.11800001
+anchor_right = 1.0
+anchor_bottom = 0.209
+offset_left = -17.85353
+offset_top = 86.0
+offset_right = -56.152527
+offset_bottom = 77.545456
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l6cm7")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_l6cm7")
+text = "start game"
+
+>>>>>>> 373773d9af95cf34e5307aec86d1918f24a20e04
 [node name="Title" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
