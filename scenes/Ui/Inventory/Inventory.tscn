@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://044a82wcmmrf"]
 
-[ext_resource type="Script" uid="uid://bd8b5vfmvn8y1" path="res://scenes/ui/inventory/inventory.gd" id="1_qki63"]
+[ext_resource type="Script" uid="uid://bd8b5vfmvn8y1" path="res://scenes/ui/Inventory/inventory.gd" id="1_qki63"]
 [ext_resource type="Texture2D" uid="uid://cuve14nufcnbj" path="res://assets/sprites/components/—Pngtree—ancient abstract gear steampunk_1440793.png" id="2_s5b14"]
 [ext_resource type="Texture2D" uid="uid://gob8maq1du10" path="res://assets/sprites/components/energy_cell/level_1_large.png" id="3_6fkdc"]
 [ext_resource type="Texture2D" uid="uid://bc42fst01lbka" path="res://assets/sprites/components/engine/level_1_large.png" id="3_qki63"]
