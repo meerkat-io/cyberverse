@@ -5,7 +5,7 @@
 ## BlockDefinition resources are handled.
 extends EditorTranslationParserPlugin
 
-const BLOCK_DEFINITION_SCRIPT_PATH := "res://addons/block_code/code_generation/block_definition.gd"
+const BLOCK_DEFINITION_SCRIPT_PATH := "res://addons/bl"res://addons/block_code/translation/parser.gd"ock_code/code_generation/block_definition.gd"
 
 # BlockDefinition properties for translation
 const block_def_tx_properties: Array[String] = [

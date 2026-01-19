@@ -8,7 +8,7 @@ const BlockDefinition = preload("res://addons/block_code/code_generation/block_d
 const Util = preload("res://addons/block_code/ui/util.gd")
 
 @export var title: String:
-	set = _set_title
+	set = _set_title"res://addons/block_code/ui/picker/categories/block_category_display.gd"
 @export var block_definitions: Array[BlockDefinition]:
 	set = _set_block_definitions
 
