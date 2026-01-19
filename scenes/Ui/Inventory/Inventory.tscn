@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://044a82wcmmrf"]
+[gd_scene load_steps=13 format=3 uid="uid://ddpjej1ftttsw"]
 
 [ext_resource type="Script" uid="uid://bd8b5vfmvn8y1" path="res://scenes/ui/Inventory/inventory.gd" id="1_qki63"]
 [ext_resource type="Texture2D" uid="uid://cuve14nufcnbj" path="res://assets/sprites/components/—Pngtree—ancient abstract gear steampunk_1440793.png" id="2_s5b14"]
@@ -57,8 +57,9 @@ anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -1136.0
+offset_top = -64.0
 offset_right = 2684.0
-offset_bottom = 1508.0
+offset_bottom = 1444.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_014n1")
@@ -113,22 +114,23 @@ text = "Inventory"
 
 [node name="Home" type="Button" parent="."]
 layout_mode = 0
-offset_left = -570.0
-offset_right = -231.0
-offset_bottom = 324.0
+offset_left = 198.0
+offset_top = -64.0
+offset_right = 537.0
+offset_bottom = 260.0
 icon = ExtResource("4_y6x41")
 expand_icon = true
 
 [node name="Level1Large" type="Sprite2D" parent="."]
-position = Vector2(1059, 1151)
+position = Vector2(991, 1088)
 texture = ExtResource("7_6fkdc")
 
 [node name="ShowMap" type="Button" parent="."]
 layout_mode = 0
-offset_left = -570.0
-offset_top = 1935.0
-offset_right = -4.0
-offset_bottom = 2157.0
+offset_left = 425.0
+offset_top = 1991.0
+offset_right = 991.0
+offset_bottom = 2213.0
 theme_override_font_sizes/font_size = 72
 theme_override_styles/normal = SubResource("StyleBoxFlat_6fkdc")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7pbmg")
