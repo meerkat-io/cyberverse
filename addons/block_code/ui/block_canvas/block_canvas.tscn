@@ -1,12 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6vumewgnfquy"]
+[gd_scene load_steps=5 format=3 uid="uid://c6vumewgnfquy"]
 
-[ext_resource type="Script" path="res://addons/block_code/ui/block_canvas/block_canvas.gd" id="1_tk8h2"]
+[ext_resource type="Script" uid="uid://dpn4rk64o084l" path="res://addons/block_code/ui/block_canvas/block_canvas.gd" id="1_tk8h2"]
 [ext_resource type="Texture2D" uid="uid://cmusxj1ppspnp" path="res://addons/block_code/block_code_node/block_code_node.svg" id="2_710vn"]
+
+[sub_resource type="DPITexture" id="DPITexture_mma38"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><circle cx=\"8\" cy=\"8\" r=\"8\" fill-opacity=\".4\"/><path fill=\"#e0e0e0\" d=\"M8 1a7 7 0 0 0 0 14A7 7 0 0 0 8 1zM4 7h8v2H4z\"/></svg>
+"
+
+[sub_resource type="DPITexture" id="DPITexture_b6qbh"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><g stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"><circle cx=\"8\" cy=\"8\" r=\"8\" fill-opacity=\".4\"/><path fill=\"#e0e0e0\" d=\"M8 1a7 7 0 0 0 0 14A7 7 0 0 0 8 1zM7 4h2v3h3v2H9v3H7V9H4V7h3z\"/></g></svg>
+"
 
 [node name="BlockCanvas" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -25,7 +34,6 @@ mouse_filter = 2
 [node name="Window" type="Control" parent="WindowContainer"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 2
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -73,6 +81,7 @@ custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 24
+icon = SubResource("DPITexture_mma38")
 
 [node name="ZoomButton" type="Button" parent="WindowContainer/Overlay/MarginContainer/ZoomButtons"]
 unique_name_in_owner = true
@@ -89,6 +98,7 @@ custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 24
+icon = SubResource("DPITexture_b6qbh")
 
 [node name="MouseOverride" type="MarginContainer" parent="."]
 unique_name_in_owner = true
