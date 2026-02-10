@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://18psybjg8yty"]
+[gd_scene load_steps=26 format=3 uid="uid://18psybjg8yty"]
 
 [ext_resource type="Script" uid="uid://dr5qs2bdvqyvl" path="res://scripts/ui/game_menu.gd" id="1_g8oa6"]
 [ext_resource type="Texture2D" uid="uid://dss8dvq6encnc" path="res://assets/sprites/ui/background.jpg" id="2_3rbob"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b438og60dg6vm" path="res://assets/sprites/ui/button_top.png" id="4_bpafv"]
 [ext_resource type="Texture2D" uid="uid://cp0li30ao1rcq" path="res://assets/sprites/ui/button_bottom.png" id="4_g8oa6"]
 [ext_resource type="Texture2D" uid="uid://dmin2rp65cvd3" path="res://assets/sprites/ui/title.png" id="5_g8oa6"]
+[ext_resource type="Script" uid="uid://3jho1vwm3t3w" path="res://scenes/ui/cheat.gd" id="7_yyry6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g8oa6"]
 content_margin_left = 0.0
@@ -61,6 +62,20 @@ thickness = 12
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_yyry6"]
 color = Color(1, 0, 0, 1)
 thickness = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yyry6"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ah5xx"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ioip1"]
 content_margin_left = 0.0
@@ -193,10 +208,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -453.0
-offset_top = -258.5
-offset_right = 453.0
-offset_bottom = 258.5
+offset_left = -447.0
+offset_top = -260.5
+offset_right = 459.0
+offset_bottom = 256.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_g8oa6")
@@ -247,9 +262,9 @@ vertical_alignment = 1
 [node name="HSlider" type="HSlider" parent="options"]
 layout_mode = 0
 offset_left = 209.0
-offset_top = 118.0
+offset_top = 109.0
 offset_right = 694.0
-offset_bottom = 151.0
+offset_bottom = 142.0
 theme_override_constants/center_grabber = 0
 theme_override_styles/slider = SubResource("StyleBoxLine_1djrs")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_yyry6")
@@ -258,12 +273,57 @@ value = 50.0
 
 [node name="sound" type="Label" parent="options"]
 layout_mode = 0
-offset_left = 55.0
+offset_left = 67.0
 offset_top = 109.0
-offset_right = 180.0
+offset_right = 192.0
 offset_bottom = 154.0
 theme_override_font_sizes/font_size = 24
 text = "sound : "
+
+[node name="Cheat" type="Control" parent="options"]
+anchors_preset = 0
+offset_left = 55.0
+offset_top = 299.0
+offset_right = 496.0
+offset_bottom = 299.0
+script = ExtResource("7_yyry6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="options/Cheat"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.5
+offset_top = -119.0
+offset_right = 315.5
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ask" type="Label" parent="options/Cheat/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_yyry6")
+text = "cheatcodes for testing :"
+horizontal_alignment = 1
+
+[node name="input code" type="LineEdit" parent="options/Cheat/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+placeholder_text = "\" input code\""
+alignment = 1
+
+[node name="try" type="Button" parent="options/Cheat/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_ah5xx")
+text = "confirm and enter            
+"
+
+[node name="confirm" type="Label" parent="options/Cheat/VBoxContainer"]
+layout_mode = 2
 
 [node name="Menu" type="PanelContainer" parent="."]
 visible = false
@@ -333,6 +393,7 @@ text = "Exit
 "
 
 [connection signal="button_down" from="options/Back" to="." method="_on_back_button_down"]
+[connection signal="pressed" from="options/Cheat/VBoxContainer/try" to="options/Cheat" method="_on_try_pressed"]
 [connection signal="pressed" from="Menu/Buttons/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Buttons/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Menu/Buttons/Settings" to="." method="_on_option_3_pressed"]

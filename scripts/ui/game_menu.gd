@@ -30,3 +30,7 @@ func _on_inventory_2_pressed() -> void:
 
 func _on_back_button_down() -> void:
 	_ready()
+
+
+func _on_try_pressed() -> void:
+	pass # Replace with function body.
