@@ -79,3 +79,6 @@ func _cast_variant(p_value: String) -> Variant:
 	if p_value.to_lower() == "true": return true
 	if p_value.to_lower() == "false": return false
 	return p_value
+
+func get_content() -> BlockContent:
+	return _content

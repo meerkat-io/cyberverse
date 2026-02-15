@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://bxhc8s8ncbl4j"]
 
-[ext_resource type="PackedScene" uid="uid://74m1mwt8ys4k" path="res://code_blocks/scenes/blocks/engine/set_power.tscn" id="1_i6qo1"]
-[ext_resource type="PackedScene" uid="uid://b2dqfop8e5srx" path="res://code_blocks/scenes/blocks/entry/on_start.tscn" id="2_rymrp"]
+[ext_resource type="PackedScene" uid="uid://74m1mwt8ys4k" path="res://code_blocks/scenes/blocks/engine/set_power.tscn" id="1_l47xn"]
+[ext_resource type="PackedScene" uid="uid://b2dqfop8e5srx" path="res://code_blocks/scenes/blocks/entry/on_start.tscn" id="2_bu52l"]
 
 [node name="Blocks" type="Node2D"]
 
-[node name="SetPower" parent="." instance=ExtResource("1_i6qo1")]
+[node name="SetPower" parent="." instance=ExtResource("1_l47xn")]
 position = Vector2(776, 609)
 
-[node name="OnStart" parent="." instance=ExtResource("2_rymrp")]
+[node name="OnStart" parent="." instance=ExtResource("2_bu52l")]
 position = Vector2(480, 401)
