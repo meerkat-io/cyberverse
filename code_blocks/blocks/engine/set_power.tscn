@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://74m1mwt8ys4k"]
+
+[ext_resource type="PackedScene" uid="uid://b80j8ho2cx8ad" path="res://code_blocks/ui/blocks/statement_block.tscn" id="1_igsmc"]
+
+[node name="SetPower" type="Node2D"]
+
+[node name="StatementBlock" parent="." instance=ExtResource("1_igsmc")]
+display_template = "Set the power level for {motor:List} to {power:int(min:0, max:100)}%"
+data_source = Dictionary[String, String]({
+"motor": "motor_list"
+})
