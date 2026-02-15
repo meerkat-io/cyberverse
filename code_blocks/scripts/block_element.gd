@@ -3,14 +3,12 @@ extends RefCounted
 
 enum ParamType { BOOL, INT, FLOAT, STRING, LIST }
 
-# --- Text ---
 class BlockTextElement extends BlockElement:
 	var text: String
 	
 	func _init(p_text: String):
 		text = p_text
 
-# --- Parameter ---
 class BlockParamElement extends BlockElement:
 	var name: String
 	var type: ParamType

@@ -23,8 +23,6 @@ func _ready() -> void:
 
 
 func _parse_display_template(p_template: String) -> Array[BlockElement]:
-	print("Parsing Template: ", p_template)
-
 	var elements: Array[BlockElement] = []
 	
 	var last_offset = 0
@@ -58,8 +56,7 @@ func _parse_display_template(p_template: String) -> Array[BlockElement]:
 	# 4. Capture any remaining text AFTER the last placeholder
 	if last_offset < p_template.length():
 		elements.append(BlockElement.BlockTextElement.new(p_template.substr(last_offset)))
-		
-	print("Parsed Elements: ", elements)
+
 	return elements
 
 func _parse_into_metadata(p_param: BlockElement.BlockParamElement, p_raw: String):

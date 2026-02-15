@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://das1ki506slc4"]
+
+[ext_resource type="PackedScene" uid="uid://bcujl2yb3y5s2" path="res://code_blocks/scenes/ui/entry_block.tscn" id="1_rwvt4"]
+
+[node name="OnTick" type="Node2D"]
+
+[node name="EntryBlock" parent="." instance=ExtResource("1_rwvt4")]
+display_template = "On tick"

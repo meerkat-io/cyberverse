@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcujl2yb3y5s2"]
+
+[ext_resource type="Script" uid="uid://d3ls2jwcyonj3" path="res://code_blocks/scripts/entry_block.gd" id="1_d4eu2"]
+[ext_resource type="Texture2D" uid="uid://b1y2d1k651aft" path="res://code_blocks/assets/level_1/entry.png" id="1_fj0l0"]
+[ext_resource type="Script" uid="uid://b18dc42t08hni" path="res://code_blocks/scripts/block_content.gd" id="2_dqlbh"]
+
+[node name="EntryBlock" type="MarginContainer"]
+script = ExtResource("1_d4eu2")
+
+[node name="Background" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(200, 75)
+layout_mode = 2
+texture = ExtResource("1_fj0l0")
+region_rect = Rect2(0, 0, 200, 75)
+patch_margin_left = 57
+patch_margin_top = 10
+patch_margin_right = 7
+patch_margin_bottom = 16
+
+[node name="ContentContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 25
+
+[node name="Content" type="HBoxContainer" parent="ContentContainer"]
+layout_mode = 2
+script = ExtResource("2_dqlbh")

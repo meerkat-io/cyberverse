@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://celnrbbcky4r4"]
+
+[ext_resource type="PackedScene" uid="uid://bcujl2yb3y5s2" path="res://code_blocks/scenes/ui/entry_block.tscn" id="1_y3rp1"]
+
+[node name="OnSignal" type="Node2D"]
+
+[node name="EntryBlock" parent="." instance=ExtResource("1_y3rp1")]
+display_template = "On signal"
