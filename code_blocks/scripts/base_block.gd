@@ -7,7 +7,7 @@ extends Node
 
 @export var data_source: Dictionary[String, String]
 
-@onready var _content: BlockContent = $ContentContainer/Content
+@onready var _content: BlockContent = $VBoxContainer/MarginContainer/MarginContainer/Content
 
 const BLOCK_ELEMENT_PATTERN = r"\{(\w+):(\w+)(?:\((.*?)\))?\}"
 
