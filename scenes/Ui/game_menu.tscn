@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dr5qs2bdvqyvl" path="res://scripts/ui/game_menu.gd" id="1_g8oa6"]
 [ext_resource type="Texture2D" uid="uid://dss8dvq6encnc" path="res://assets/sprites/ui/background.jpg" id="2_3rbob"]
 [ext_resource type="Texture2D" uid="uid://ct6c8uhmfcfxo" path="res://assets/sprites/ui/panel_bg.png" id="3_vtvlb"]
-[ext_resource type="FontFile" uid="uid://c5gom86e4fait" path="res://assets/fonts/NotoSans_Condensed-SemiBold.ttf" id="4_1djrs"]
+[ext_resource type="FontFile" uid="uid://c5gom86e4fait" path="res://assets/fonts/NotoSans.ttf" id="4_1djrs"]
 [ext_resource type="Texture2D" uid="uid://badwd23dnlkhu" path="res://assets/sprites/ui/button_middle.png" id="4_3rbob"]
 [ext_resource type="Texture2D" uid="uid://b438og60dg6vm" path="res://assets/sprites/ui/button_top.png" id="4_bpafv"]
 [ext_resource type="Texture2D" uid="uid://cp0li30ao1rcq" path="res://assets/sprites/ui/button_bottom.png" id="4_g8oa6"]
