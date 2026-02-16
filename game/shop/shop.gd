@@ -17,3 +17,22 @@ func _on_exit_pressed() -> void:
 	#rightmenu.visible = true
 	#leftmenu.visible = true
 	queue_free()
+
+
+
+	
+	
+
+signal diamonds_changed(amount)
+
+
+
+var diamonds := 0
+
+func add_diamonds(value):
+	diamonds += value
+	emit_signal("diamonds_changed", diamonds)
+
+
+func _on_buy_pressed() -> void:
+	add_diamonds(30)

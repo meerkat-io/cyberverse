@@ -4,3 +4,10 @@
 
 [node name="PlayerData" type="Node"]
 script = ExtResource("1_2cncy")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1186.0
+offset_right = 1911.0
+offset_bottom = 121.0
+text = "label.text = str(PlayerData.diamonds)
+"

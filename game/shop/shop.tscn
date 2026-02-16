@@ -225,3 +225,4 @@ icon = ExtResource("6_oudrr")
 expand_icon = true
 
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="truhen/Buy" to="." method="_on_buy_pressed"]
