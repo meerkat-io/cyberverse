@@ -1,22 +1,15 @@
 class_name Component
 extends Control
 
-## Emitted when the user starts dragging the component.
 signal drag_started
-## Emitted when the user drops the component.
-## Passes the global position of the drop.
 signal drag_ended(drop_position: Vector2)
 
 enum ComponentType { ENGINE, BATTERY, CPU, CHASSIS }
 
-## The size of the component in grid tiles (width, height).
-## You can set this in the Inspector for each component scene.
 @export var tile_span: Vector2i = Vector2i(1, 1)
 
-# The type of component, which can be used to determine its function in the assembly.
 @export var component_type: ComponentType = ComponentType.ENGINE
 
-## The component's top-left grid coordinate. This is managed by the Inventory.
 var grid_position: Vector2i
 
 var _is_dragging := false

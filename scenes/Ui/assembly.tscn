@@ -1,5 +1,44 @@
-[gd_scene format=3 uid="uid://c710rwy4if58m"]
+[gd_scene load_steps=4 format=3 uid="uid://c710rwy4if58m"]
+
+[ext_resource type="PackedScene" uid="uid://ctkhoh47uphp5" path="res://scenes/ui/inventory.tscn" id="1_4e5bs"]
+[ext_resource type="Script" uid="uid://bsptx885r3ntm" path="res://scripts/ui/assembly.gd" id="1_p0phh"]
+[ext_resource type="PackedScene" uid="uid://ydpsw6gl7aw8" path="res://scenes/components/chassis/level_1.tscn" id="3_p1fsb"]
 
 [node name="Assembly" type="Control"]
+custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("1_p0phh")
+
+[node name="Background" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.14117648, 0.14117648, 0.14901961, 1)
+
+[node name="Inventory" parent="." instance=ExtResource("1_4e5bs")]
+custom_minimum_size = Vector2(835, 1080)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.51500005
+anchor_right = 0.95000005
+offset_left = 0.19989014
+offset_right = -0.00012207031
+offset_bottom = 1080.0
+grow_horizontal = 0
+
+[node name="AutoBot" type="Control" parent="."]
+custom_minimum_size = Vector2(470, 640)
+layout_mode = 1
+anchor_left = 0.145
+anchor_top = 0.189
+anchor_right = 0.168
+anchor_bottom = 0.203
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Chassis" parent="AutoBot" instance=ExtResource("3_p1fsb")]
+position = Vector2(235, 320)

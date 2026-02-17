@@ -1,8 +1,9 @@
 class_name AssemblyUI
 extends Control
 
-## This script will manage the interaction between the
-## inventory and the car assembly area.
+@onready var inventory: Inventory = $Inventory
+
+@onready var chassis: CharacterBody2D = $AutoBot/Chassis
 
 func _ready() -> void:
 	# In the future, you can get references to your inventory and

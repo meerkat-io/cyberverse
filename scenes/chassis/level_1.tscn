@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://ydpsw6gl7aw8"]
+
+[ext_resource type="Texture2D" uid="uid://dr0yqw7p7oej1" path="res://assets/sprites/components/chassis/level_1.png" id="1_5q5id"]
+[ext_resource type="Script" uid="uid://dfogh4em8hk1e" path="res://scripts/chassis/steering.gd" id="1_hvr0d"]
+[ext_resource type="PackedScene" uid="uid://gq6mv3r2jqs1" path="res://scenes/chassis/level_1_wheel.tscn" id="2_d7qkh"]
+[ext_resource type="Texture2D" uid="uid://18v1hqu0wosv" path="res://assets/sprites/components/chassis/level_1_wheel_bridge.png" id="3_pbtcp"]
+[ext_resource type="PackedScene" uid="uid://c3ebcr0utjd5p" path="res://scenes/chassis/slot.tscn" id="5_pbtcp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7qkh"]
+size = Vector2(470, 640)
+
+[node name="Chassis" type="CharacterBody2D" node_paths=PackedStringArray("wheels_animation")]
+script = ExtResource("1_hvr0d")
+wheels_animation = [NodePath("RearLeftWheel"), NodePath("RearRightWheel"), NodePath("FrontLeftWheel/Wheel"), NodePath("FrontRightWheel/Wheel")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_d7qkh")
+
+[node name="RearLeftWheel" parent="." instance=ExtResource("2_d7qkh")]
+position = Vector2(-186, 217)
+animation = &"reverse"
+frame_progress = 0.2718367
+
+[node name="RearRightWheel" parent="." instance=ExtResource("2_d7qkh")]
+position = Vector2(190, 218)
+rotation = -3.1415925
+animation = &"run"
+frame_progress = 0.047613602
+
+[node name="FrontLeftWheel" type="Node2D" parent="."]
+position = Vector2(120, -212)
+
+[node name="Bridge" type="Sprite2D" parent="FrontLeftWheel"]
+texture = ExtResource("3_pbtcp")
+
+[node name="Wheel" parent="FrontLeftWheel" instance=ExtResource("2_d7qkh")]
+position = Vector2(59, -3)
+
+[node name="FrontRightWheel" type="Node2D" parent="."]
+position = Vector2(-115, -213)
+
+[node name="Bridge" type="Sprite2D" parent="FrontRightWheel"]
+scale = Vector2(-1, -1)
+texture = ExtResource("3_pbtcp")
+
+[node name="Wheel" parent="FrontRightWheel" instance=ExtResource("2_d7qkh")]
+position = Vector2(-57, -1)
+
+[node name="Chassis" type="Sprite2D" parent="."]
+texture = ExtResource("1_5q5id")
+
+[node name="GeneralSlot1" parent="." instance=ExtResource("5_pbtcp")]
+offset_left = -128.0
+offset_bottom = 128.0
+tile_span = Vector2i(2, 1)
+
+[node name="GeneralSlot2" parent="." instance=ExtResource("5_pbtcp")]
+offset_left = -128.0
+offset_top = -136.0
+offset_bottom = -8.0
+tile_span = Vector2i(2, 1)
+
+[node name="EngineSlot" parent="." instance=ExtResource("5_pbtcp")]
+offset_left = -128.0
+offset_top = 152.0
+offset_bottom = 280.0
+tile_span = Vector2i(2, 1)
+slot_type = 1
