@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ks6wv0q2kiyg"]
+
+[ext_resource type="Script" uid="uid://cg6fft6vm3q7s" path="res://Player/player_data.gd" id="1_2cncy"]
+
+[node name="PlayerData" type="Node"]
+script = ExtResource("1_2cncy")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1186.0
+offset_right = 1911.0
+offset_bottom = 121.0
+text = "label.text = str(PlayerData.diamonds)
+"

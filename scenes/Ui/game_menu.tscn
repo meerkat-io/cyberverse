@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://18psybjg8yty"]
+[gd_scene load_steps=30 format=3 uid="uid://18psybjg8yty"]
 
 [ext_resource type="Script" uid="uid://dr5qs2bdvqyvl" path="res://scripts/ui/game_menu.gd" id="1_g8oa6"]
 [ext_resource type="Texture2D" uid="uid://dss8dvq6encnc" path="res://assets/sprites/ui/background.jpg" id="2_3rbob"]
@@ -8,6 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://b438og60dg6vm" path="res://assets/sprites/ui/button_top.png" id="4_bpafv"]
 [ext_resource type="Texture2D" uid="uid://cp0li30ao1rcq" path="res://assets/sprites/ui/button_bottom.png" id="4_g8oa6"]
 [ext_resource type="Texture2D" uid="uid://dmin2rp65cvd3" path="res://assets/sprites/ui/title.png" id="5_g8oa6"]
+[ext_resource type="Script" uid="uid://3jho1vwm3t3w" path="res://scenes/ui/cheat.gd" id="7_yyry6"]
+[ext_resource type="Texture2D" uid="uid://cl2qg3fi1dwxj" path="res://assets/sprites/shopicons/shop.png" id="10_ah5xx"]
+[ext_resource type="Texture2D" uid="uid://dvsjnft53xcna" path="res://assets/sprites/shopicons/quest.png" id="11_nrj1f"]
+[ext_resource type="Texture2D" uid="uid://clqfsm65xjh4i" path="res://assets/sprites/shopicons/loot.jpg" id="12_1rrd4"]
+[ext_resource type="Script" uid="uid://banixrw7u6jsv" path="res://scenes/ui/player_data.gd" id="12_ioip1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g8oa6"]
 content_margin_left = 0.0
@@ -61,6 +66,20 @@ thickness = 12
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_yyry6"]
 color = Color(1, 0, 0, 1)
 thickness = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yyry6"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ah5xx"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ioip1"]
 content_margin_left = 0.0
@@ -161,6 +180,10 @@ anchor_left = 0.5
 anchor_top = 0.1
 anchor_right = 0.5
 anchor_bottom = 0.1
+offset_left = -384.0
+offset_top = -7.0
+offset_right = 384.0
+offset_bottom = 249.0
 grow_horizontal = 2
 texture = ExtResource("5_g8oa6")
 
@@ -180,10 +203,10 @@ grow_vertical = 2
 
 [node name="choose" type="Label" parent="options"]
 layout_mode = 0
-offset_left = 710.0
-offset_top = 612.0
-offset_right = 1172.0
-offset_bottom = 826.0
+offset_left = 150.0
+offset_top = 154.0
+offset_right = 612.0
+offset_bottom = 368.0
 
 [node name="Menu2" type="PanelContainer" parent="options"]
 custom_minimum_size = Vector2(500, 450)
@@ -193,10 +216,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -453.0
+offset_left = -380.0
 offset_top = -258.5
-offset_right = 453.0
-offset_bottom = 258.5
+offset_right = 413.0
+offset_bottom = 264.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_g8oa6")
@@ -247,9 +270,9 @@ vertical_alignment = 1
 [node name="HSlider" type="HSlider" parent="options"]
 layout_mode = 0
 offset_left = 209.0
-offset_top = 118.0
+offset_top = 109.0
 offset_right = 694.0
-offset_bottom = 151.0
+offset_bottom = 142.0
 theme_override_constants/center_grabber = 0
 theme_override_styles/slider = SubResource("StyleBoxLine_1djrs")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_yyry6")
@@ -258,12 +281,64 @@ value = 50.0
 
 [node name="sound" type="Label" parent="options"]
 layout_mode = 0
-offset_left = 55.0
+offset_left = 67.0
 offset_top = 109.0
-offset_right = 180.0
+offset_right = 192.0
 offset_bottom = 154.0
 theme_override_font_sizes/font_size = 24
 text = "sound : "
+
+[node name="Cheat" type="Control" parent="options"]
+anchors_preset = 0
+offset_left = 55.0
+offset_top = 299.0
+offset_right = 496.0
+offset_bottom = 299.0
+script = ExtResource("7_yyry6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="options/Cheat"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.5
+offset_top = -119.0
+offset_right = 315.5
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ask" type="Label" parent="options/Cheat/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_yyry6")
+text = "cheatcodes for testing :"
+horizontal_alignment = 1
+
+[node name="input code" type="LineEdit" parent="options/Cheat/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+placeholder_text = "\" input code\""
+alignment = 1
+
+[node name="try" type="Button" parent="options/Cheat/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0.0018410678, 0.0018410682, 0.0018410678, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_ah5xx")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_ah5xx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ah5xx")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_ah5xx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ah5xx")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ah5xx")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ah5xx")
+text = "confirm and enter            
+"
+
+[node name="confirm" type="Label" parent="options/Cheat/VBoxContainer"]
+layout_mode = 2
 
 [node name="Menu" type="PanelContainer" parent="."]
 visible = false
@@ -332,8 +407,62 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_1djrs")
 text = "Exit
 "
 
+[node name="Node" type="Node" parent="."]
+
+[node name="leftmenu" type="PanelContainer" parent="Node"]
+offset_left = 172.0
+offset_top = 458.0
+offset_right = 427.0
+offset_bottom = 908.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_g8oa6")
+
+[node name="Button" type="Button" parent="Node"]
+offset_left = 222.0
+offset_top = 521.0
+offset_right = 377.0
+offset_bottom = 676.0
+icon = ExtResource("10_ah5xx")
+expand_icon = true
+
+[node name="tasks" type="Button" parent="Node"]
+offset_left = 222.0
+offset_top = 690.0
+offset_right = 377.0
+offset_bottom = 845.0
+icon = ExtResource("11_nrj1f")
+expand_icon = true
+
+[node name="rightmenu" type="Node" parent="."]
+
+[node name="rightmenu" type="PanelContainer" parent="rightmenu"]
+offset_left = 1539.0
+offset_top = 458.0
+offset_right = 1794.0
+offset_bottom = 908.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_g8oa6")
+
+[node name="Button" type="Button" parent="rightmenu"]
+offset_left = 1591.0
+offset_top = 521.0
+offset_right = 1745.0
+offset_bottom = 672.0
+icon = ExtResource("12_1rrd4")
+expand_icon = true
+
+[node name="PlayerData" type="Node" parent="."]
+script = ExtResource("12_ioip1")
+
+[node name="Label" type="Label" parent="PlayerData"]
+offset_left = 1516.0
+offset_top = 42.0
+offset_right = 1556.0
+offset_bottom = 65.0
+text = "ddf gh"
+
 [connection signal="button_down" from="options/Back" to="." method="_on_back_button_down"]
+[connection signal="pressed" from="options/Cheat/VBoxContainer/try" to="options/Cheat" method="_on_try_pressed"]
 [connection signal="pressed" from="Menu/Buttons/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/Buttons/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Menu/Buttons/Settings" to="." method="_on_option_3_pressed"]
 [connection signal="pressed" from="Menu/Buttons/Exit" to="." method="_on_exit_2_pressed"]
+[connection signal="pressed" from="Node/Button" to="." method="_on_shop_pressed"]
