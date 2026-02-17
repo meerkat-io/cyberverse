@@ -74,7 +74,7 @@ func _on_component_drag_ended(drop_position: Vector2, component: Component) -> v
 
 	var container_rect := container.get_global_rect()
 
-	if container_rect.has_point(drop_position):
+	if container_rect.has_point(drop_position + cell_size * 0.5):
 		var local_drop_pos := drop_position - container_rect.position
 		var grid_pos := _local_to_grid_coords(local_drop_pos)
 
