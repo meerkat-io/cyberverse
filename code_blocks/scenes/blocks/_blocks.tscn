@@ -1,12 +1,21 @@
 [gd_scene load_steps=3 format=3 uid="uid://bxhc8s8ncbl4j"]
 
-[ext_resource type="PackedScene" uid="uid://74m1mwt8ys4k" path="res://code_blocks/scenes/blocks/engine/set_power.tscn" id="1_l47xn"]
-[ext_resource type="PackedScene" uid="uid://b2dqfop8e5srx" path="res://code_blocks/scenes/blocks/entry/on_start.tscn" id="2_bu52l"]
+[ext_resource type="PackedScene" uid="uid://74m1mwt8ys4k" path="res://code_blocks/scenes/blocks/engine/set_power.tscn" id="1_mgsbt"]
+[ext_resource type="PackedScene" uid="uid://b2dqfop8e5srx" path="res://code_blocks/scenes/blocks/entry/on_start.tscn" id="2_tafhq"]
 
 [node name="Blocks" type="Node2D"]
 
-[node name="SetPower" parent="." instance=ExtResource("1_l47xn")]
-position = Vector2(776, 609)
+[node name="SetPower" parent="." instance=ExtResource("1_mgsbt")]
+position = Vector2(906, 497)
 
-[node name="OnStart" parent="." instance=ExtResource("2_bu52l")]
+[node name="OnStart" parent="." instance=ExtResource("2_tafhq")]
 position = Vector2(480, 401)
+
+[node name="SetPower2" parent="." instance=ExtResource("1_mgsbt")]
+position = Vector2(916, 646)
+
+[node name="SetPower3" parent="." instance=ExtResource("1_mgsbt")]
+position = Vector2(914, 345)
+
+[node name="SetPower4" parent="." instance=ExtResource("1_mgsbt")]
+position = Vector2(930, 772)

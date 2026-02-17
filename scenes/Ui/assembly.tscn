@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://c710rwy4if58m"]
+
+[node name="Assembly" type="Control"]
+layout_mode = 3
+anchors_preset = 0

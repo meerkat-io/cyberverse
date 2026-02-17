@@ -2,6 +2,7 @@ extends Control
 
 const MINIMUM_DRAG_THRESHOLD = 25
 const SNAP_DISTANCE = 30
+const DRAG_Z_INDEX = 1000
 
 var _is_dragging: bool = false
 var _drag_offset: Vector2
@@ -10,6 +11,7 @@ var _drag_start_position: Vector2 = Vector2.INF
 var _snap_points: Array[Control] = []
 var _connected_roots: Array[Node2D] = []
 var _connected_offsets: Array[Vector2] = []
+var _original_z_index: int = 0
 
 func _ready() -> void:
 	_root_block = _get_root_block()
@@ -64,6 +66,9 @@ func _process(_delta: float) -> void:
 				_connected_roots[i].global_position = _root_block.global_position + _connected_offsets[i]
 
 func _on_drag_started() -> void:
+	_original_z_index = _root_block.z_index
+	_root_block.z_index = DRAG_Z_INDEX
+
 	_update_snap_points()
 	
 	var my_block = _get_block()
@@ -105,6 +110,9 @@ func _on_drag_ended() -> void:
 					my_last.set_tail_block(old_tail)
 					old_tail.set_head_block(my_last)
 					_reposition_chain(my_last)
+
+		if is_instance_valid(_root_block):
+			_root_block.z_index = _original_z_index
 
 	_is_dragging = false
 	_drag_start_position = Vector2.INF

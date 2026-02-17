@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ydpsw6gl7aw8"]
 
-[ext_resource type="Texture2D" uid="uid://0ipcmlxqvnv8" path="res://assets/sprites/components/chassis/level_1.png" id="1_5q5id"]
+[ext_resource type="Texture2D" uid="uid://dr0yqw7p7oej1" path="res://assets/sprites/components/chassis/level_1.png" id="1_5q5id"]
 [ext_resource type="PackedScene" uid="uid://dm4v1blsned1v" path="res://scenes/components/chassis/level_1_front_wheel.tscn" id="2_co4xd"]
 [ext_resource type="PackedScene" uid="uid://gq6mv3r2jqs1" path="res://scenes/components/chassis/level_1_rear_wheel.tscn" id="2_d7qkh"]
 [ext_resource type="PackedScene" uid="uid://d38d043t3m8or" path="res://scenes/components/engine/level_1.tscn" id="4_cevks"]
@@ -46,7 +46,6 @@ position = Vector2(1, 52)
 position = Vector2(0, -68)
 
 [node name="GeneralSlot" type="ColorRect" parent="."]
-visible = false
 offset_left = -130.0
 offset_top = -3.0
 offset_right = -2.0
