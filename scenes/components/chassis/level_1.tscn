@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://gq6mv3r2jqs1" path="res://scenes/components/chassis/level_1_rear_wheel.tscn" id="2_d7qkh"]
 [ext_resource type="PackedScene" uid="uid://d38d043t3m8or" path="res://scenes/components/engine/level_1.tscn" id="4_cevks"]
 [ext_resource type="PackedScene" uid="uid://b514ipaxxstri" path="res://scenes/components/intelligent_module/level_1.tscn" id="5_afvvv"]
-[ext_resource type="PackedScene" uid="uid://65sj78xl3i44" path="res://scenes/components/energy_cell/level_1.tscn" id="6_getyh"]
+[ext_resource type="PackedScene" uid="uid://65sj78xl3i44" path="res://scenes/components/energy_cell/_level_1.tscn" id="6_getyh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7qkh"]
 size = Vector2(469, 641)

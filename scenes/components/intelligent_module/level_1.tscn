@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://b514ipaxxstri"]
+[gd_scene load_steps=3 format=3 uid="uid://b514ipaxxstri"]
 
 [ext_resource type="Texture2D" uid="uid://dks8yod4ufa5u" path="res://assets/sprites/components/intelligent_module/level_1.png" id="1_qnwoi"]
+[ext_resource type="Script" uid="uid://bfgup753sgcr0" path="res://scripts/component/component.gd" id="2_o2lp2"]
 
 [node name="IntelligentModule" type="Sprite2D"]
 texture = ExtResource("1_qnwoi")
+script = ExtResource("2_o2lp2")
+tile_span = Vector2i(2, 1)
+component_type = 2

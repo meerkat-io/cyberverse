@@ -5,7 +5,7 @@
 [node name="SetPower" type="Node2D"]
 
 [node name="StatementBlock" parent="." instance=ExtResource("1_igsmc")]
-display_template = "Set the power level for {motor:List} to {power:int(min:0, max:100)}%"
+display_template = "Set the power level for {motor:list} to {power:int(min:0, max:100)}%"
 data_source = Dictionary[String, String]({
 "motor": "motor_list"
 })
