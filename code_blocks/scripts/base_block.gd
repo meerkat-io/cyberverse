@@ -12,6 +12,8 @@ extends Node
 const BLOCK_ELEMENT_PATTERN = r"\{(\w+):(\w+)(?:\((.*?)\))?\}"
 
 var _regex: RegEx
+var _head_block: BaseBlock = null
+var _tail_block: BaseBlock = null
 
 func _init() -> void:
 	_regex = RegEx.new()
@@ -82,3 +84,15 @@ func _cast_variant(p_value: String) -> Variant:
 
 func get_content() -> BlockContent:
 	return _content
+
+func set_head_block(p_block: BaseBlock) -> void:
+	_head_block = p_block
+
+func set_tail_block(p_block: BaseBlock) -> void:
+	_tail_block = p_block
+
+func get_head_block() -> BaseBlock:
+	return _head_block
+
+func get_tail_block() -> BaseBlock:
+	return _tail_block
