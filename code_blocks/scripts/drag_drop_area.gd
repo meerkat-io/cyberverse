@@ -1,7 +1,7 @@
 extends Control
 
 const MINIMUM_DRAG_THRESHOLD = 25
-const SNAP_DISTANCE = 50
+const SNAP_DISTANCE = 30
 
 var _is_dragging: bool = false
 var _drag_offset: Vector2
@@ -27,8 +27,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		var button_event: InputEventMouseButton = event as InputEventMouseButton
 		if button_event.button_index == MOUSE_BUTTON_LEFT and button_event.pressed:
-			if get_global_rect().has_point(button_event.global_position):
+			var hovered_control = get_viewport().gui_get_hovered_control()
+			if hovered_control and _root_block.is_ancestor_of(hovered_control):
 				_drag_start_position = button_event.global_position
+				get_viewport().set_input_as_handled()
 
 func _process(_delta: float) -> void:
 	if not _root_block:
@@ -102,6 +104,7 @@ func _on_drag_ended() -> void:
 					
 					my_last.set_tail_block(old_tail)
 					old_tail.set_head_block(my_last)
+					_reposition_chain(my_last)
 
 	_is_dragging = false
 	_drag_start_position = Vector2.INF
@@ -147,3 +150,21 @@ func _get_block_snap_point(p_snap_point: Control) -> BaseBlock:
 
 func _get_root_of_block(p_block: BaseBlock) -> Node2D:
 	return p_block.get_parent() as Node2D
+
+func _reposition_chain(p_start_block: BaseBlock) -> void:
+	var curr = p_start_block
+	while curr.get_tail_block():
+		var tail = curr.get_tail_block()
+		var snap = _find_snap_point(curr)
+		var tail_root = _get_root_of_block(tail)
+		if snap and tail_root:
+			tail_root.global_position = snap.global_position
+		curr = tail
+
+func _find_snap_point(p_block: BaseBlock) -> Control:
+	var root = _get_root_of_block(p_block)
+	if not root: return null
+	for child in root.find_children("*", "Control", true, false):
+		if child.is_in_group("snap_point") and _get_block_snap_point(child) == p_block:
+			return child
+	return null
