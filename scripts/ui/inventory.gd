@@ -52,7 +52,9 @@ func _ready() -> void:
 
 	# For testing, we can add some components to the inventory on startup.
 	var components: Array[Component.ComponentData] = [
-		Component.ComponentData.new("/Users/sang/Dev/meerkat/cyberverse/scenes/components/energy_cell/level_1.tscn", Vector2i(0, 0))
+		Component.ComponentData.new("res://scenes/components/energy_cell/level_1.tscn", Vector2i(0, 0)),
+		Component.ComponentData.new("res://scenes/components/engine/level_1.tscn", Vector2i(2, 0)),
+		Component.ComponentData.new("res://scenes/components/intelligent_module/level_1.tscn", Vector2i(4, 0))
 	]
 	init_inventory(components)
 

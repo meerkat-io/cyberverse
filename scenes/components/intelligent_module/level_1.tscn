@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://b514ipaxxstri"]
+[gd_scene load_steps=3 format=3 uid="uid://b514ipaxxstri"]
 
 [ext_resource type="Texture2D" uid="uid://dks8yod4ufa5u" path="res://assets/sprites/components/intelligent_module/level_1.png" id="1_qnwoi"]
+[ext_resource type="Script" uid="uid://bfgup753sgcr0" path="res://scripts/component/component.gd" id="2_cfn04"]
 
-[node name="IntelligentModule" type="Sprite2D"]
+[node name="IntelligentModule" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_default_cursor_shape = 2
+script = ExtResource("2_cfn04")
+tile_span = Vector2i(2, 1)
+component_type = 2
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(128, 64)
 texture = ExtResource("1_qnwoi")
