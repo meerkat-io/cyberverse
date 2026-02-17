@@ -39,7 +39,7 @@ func _gui_input(event: InputEvent) -> void:
 		elif _is_dragging:
 			_is_dragging = false
 			z_index = 0
-			drag_ended.emit(get_global_mouse_position())
+			drag_ended.emit(global_position)
 
 func _process(_delta: float) -> void:
 	if _is_dragging:

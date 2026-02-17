@@ -70,10 +70,10 @@ func _on_component_drag_started(component: Component) -> void:
 func _on_component_drag_ended(drop_position: Vector2, component: Component) -> void:
 	if not is_instance_valid(component): return
 
-	var inventory_rect := get_global_rect()
+	var container_rect := container.get_global_rect()
 
-	if inventory_rect.has_point(drop_position):
-		var local_drop_pos := drop_position - inventory_rect.position
+	if container_rect.has_point(drop_position):
+		var local_drop_pos := drop_position - container_rect.position
 		var grid_pos := _local_to_grid_coords(local_drop_pos)
 
 		if can_place(component, grid_pos):
@@ -120,4 +120,4 @@ func _clear_component_occupation(component: Component) -> void:
 				_occupied_cells.erase(cell)
 
 func _local_to_grid_coords(local_pos: Vector2) -> Vector2i:
-	return Vector2i(floor(local_pos.x / cell_size.x), floor(local_pos.y / cell_size.y))
+	return Vector2i(floor(local_pos.x / cell_size.x + 0.5), floor(local_pos.y / cell_size.y + 0.5))
