@@ -7,7 +7,7 @@ func _ready() -> void:
 	start_button.pressed.connect(_on_start_button_pressed)
 
 func _on_start_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/ui/test_map.tscn")
+	get_tree().change_scene_to_file("res://game/map/test_map.tscn")
 
 #	var test_data = {
 #		"Engine": {"Set Power": "res://code_blocks/scenes/blocks/engine/set_power.tscn"},

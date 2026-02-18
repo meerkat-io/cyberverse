@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://d2o7epgrxe3s1"]
 
-[ext_resource type="PackedScene" uid="uid://ydpsw6gl7aw8" path="res://scenes/chassis/level_1.tscn" id="1_ygxep"]
+[ext_resource type="PackedScene" uid="uid://ydpsw6gl7aw8" path="res://scenes/chassis/level_1.tscn" id="1_wk2ht"]
 
 [node name="TestMap" type="Node2D"]
 
-[node name="Chassis" parent="." instance=ExtResource("1_ygxep")]
+[node name="Chassis" parent="." instance=ExtResource("1_wk2ht")]
 position = Vector2(355, 520)
 rotation = 1.5707964
 scale = Vector2(0.5, 0.5)
