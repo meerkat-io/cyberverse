@@ -1,5 +1,5 @@
 class_name SteeringSmartCar
-extends Node2D
+extends CharacterBody2D
 
 signal level_passed
 
@@ -33,6 +33,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	_simulate_movement(delta)
+	move_and_slide() # Let Godot's physics engine handle movement and collision
 	_check_collision()
 
 func set_engine_power(power_ratio: float) -> void:
@@ -55,8 +56,9 @@ func _simulate_movement(delta: float) -> void:
 		rotation += _steering_angle * delta
 	
 	# Move
+	# Set velocity for move_and_slide(). Vector2.RIGHT corresponds to 0 rotation (forward).
 	var direction := Vector2.UP.rotated(rotation)
-	global_position += direction * _current_speed * delta
+	velocity = direction * _current_speed
 	
 	# Update animations
 	for anim in wheels_animation:
