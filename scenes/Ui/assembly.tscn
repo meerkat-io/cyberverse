@@ -1,9 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://c710rwy4if58m"]
+[gd_scene load_steps=10 format=3 uid="uid://c710rwy4if58m"]
 
 [ext_resource type="PackedScene" uid="uid://ctkhoh47uphp5" path="res://scenes/ui/inventory.tscn" id="1_4e5bs"]
 [ext_resource type="Script" uid="uid://bsptx885r3ntm" path="res://scripts/ui/assembly.gd" id="1_p0phh"]
 [ext_resource type="Texture2D" uid="uid://ijd43uctup71" path="res://assets/sprites/ui/chassis_bg.png" id="2_urjvv"]
 [ext_resource type="PackedScene" uid="uid://ydpsw6gl7aw8" path="res://scenes/chassis/level_1.tscn" id="3_p1fsb"]
+[ext_resource type="Texture2D" uid="uid://dax2cmyu21ixk" path="res://assets/sprites/ui/program_button_normal.png" id="5_88mu7"]
+[ext_resource type="Texture2D" uid="uid://cg7w8qq06y14r" path="res://assets/sprites/ui/program_button_activate.png" id="6_blb5s"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2f1ga"]
+texture = ExtResource("5_88mu7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rjrym"]
+texture = ExtResource("6_blb5s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rv7h0"]
+texture = ExtResource("6_blb5s")
 
 [node name="Assembly" type="Control"]
 custom_minimum_size = Vector2(1920, 1080)
@@ -12,7 +23,7 @@ anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("1_p0phh")
-metadata/_edit_horizontal_guides_ = [176.0, 987.0]
+metadata/_edit_horizontal_guides_ = [176.0, 987.0, 122.0]
 
 [node name="Background" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
@@ -28,9 +39,9 @@ anchor_left = 0.1
 anchor_top = 0.163
 anchor_right = 0.21
 anchor_bottom = 0.304
-offset_left = 53.0
+offset_left = 107.0
 offset_top = -17.040009
-offset_right = 459.80002
+offset_right = 518.80005
 offset_bottom = 676.68005
 texture = ExtResource("2_urjvv")
 patch_margin_left = 131
@@ -57,8 +68,21 @@ anchor_left = 0.16600001
 anchor_top = 0.24400002
 anchor_right = 0.41000003
 anchor_bottom = 0.836
-offset_bottom = 0.11999512
+offset_left = 56.27997
+offset_right = 57.799927
+offset_bottom = 0.64001465
 
 [node name="Chassis" parent="AutoBot" node_paths=PackedStringArray("wheels_animation") instance=ExtResource("3_p1fsb")]
 position = Vector2(235, 320)
 wheels_animation = [NodePath("RearLeftWheel"), NodePath("RearRightWheel"), null, null]
+
+[node name="ProgrammingButton" type="Button" parent="."]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 0
+offset_left = 94.0
+offset_top = 48.0
+offset_right = 244.0
+offset_bottom = 198.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_2f1ga")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rjrym")
+theme_override_styles/hover = SubResource("StyleBoxTexture_rv7h0")

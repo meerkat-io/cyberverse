@@ -5,6 +5,8 @@ extends Control
 
 @onready var chassis: SteeringSmartCar = $AutoBot/Chassis
 
+@onready var programming_button: Button = $ProgrammingButton
+
 func _ready() -> void:
 	# In the future, you can get references to your inventory and
 	# assembly area nodes here. You can also connect to signals.
@@ -14,6 +16,7 @@ func _ready() -> void:
 	# it landed in the assembly area.
 	print("Assembly UI is ready.")
 	inventory.component_dropped_outside.connect(_on_inventory_component_dropped_outside)
+	programming_button.pressed.connect(_on_programming_button_pressed)
 
 func _on_inventory_component_dropped_outside(component: Component, drop_position: Vector2) -> void:
 	for slot in chassis.slots:
@@ -61,3 +64,6 @@ func _on_chassis_component_drag_ended(drop_position: Vector2, component: Compone
 		var slot = component.get_meta("occupied_slot") as Slot
 		if slot:
 			component.global_position = slot.global_position
+
+func _on_programming_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/ui/programming.tscn")

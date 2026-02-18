@@ -1,16 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7agu8kbmi7fq"]
+[gd_scene load_steps=13 format=3 uid="uid://c7agu8kbmi7fq"]
 
+[ext_resource type="Script" uid="uid://c65io6ndnx8g8" path="res://scripts/ui/programming.gd" id="1_8t1j7"]
 [ext_resource type="PackedScene" uid="uid://74m1mwt8ys4k" path="res://code_blocks/scenes/blocks/engine/set_power.tscn" id="2_n3qnv"]
 [ext_resource type="PackedScene" uid="uid://br4ecxlwwavx4" path="res://code_blocks/scenes/blocks/engine/stop_motor.tscn" id="3_nbl5n"]
 [ext_resource type="PackedScene" uid="uid://b2dqfop8e5srx" path="res://code_blocks/scenes/blocks/entry/on_start.tscn" id="4_33wpo"]
 [ext_resource type="PackedScene" uid="uid://das1ki506slc4" path="res://code_blocks/scenes/blocks/entry/on_tick.tscn" id="5_al63l"]
 [ext_resource type="PackedScene" uid="uid://dpbpdvr6smrh" path="res://code_blocks/scenes/blocks/control/wait.tscn" id="6_bynt6"]
 [ext_resource type="PackedScene" uid="uid://celnrbbcky4r4" path="res://code_blocks/scenes/blocks/entry/on_signal.tscn" id="6_n3qnv"]
+[ext_resource type="Texture2D" uid="uid://cvlu6lggtp51y" path="res://assets/sprites/ui/start_button_normal.png" id="8_al63l"]
+[ext_resource type="Texture2D" uid="uid://b7q42vhndlxox" path="res://assets/sprites/ui/start_button_activate.png" id="9_bynt6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l3k8s"]
+texture = ExtResource("8_al63l")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w51cw"]
+texture = ExtResource("9_bynt6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o22id"]
+texture = ExtResource("9_bynt6")
 
 [node name="Programming" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 mouse_filter = 2
+script = ExtResource("1_8t1j7")
 
 [node name="Background" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
@@ -36,3 +49,14 @@ position = Vector2(1183, 784)
 
 [node name="OnSignal" parent="." instance=ExtResource("6_n3qnv")]
 position = Vector2(1452, 688)
+
+[node name="StartButton" type="Button" parent="."]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 0
+offset_left = 94.0
+offset_top = 48.0
+offset_right = 244.0
+offset_bottom = 198.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_l3k8s")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_w51cw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_o22id")
