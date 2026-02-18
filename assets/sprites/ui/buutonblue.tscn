@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxri4va0ijap7"]
+
+[ext_resource type="Texture2D" uid="uid://c62r036y33sji" path="res://assets/sprites/ui/button_normal.png" id="1_ic8sh"]
+[ext_resource type="Texture2D" uid="uid://bu0f4oo7oavi3" path="res://assets/sprites/ui/button_activate.png" id="2_raycc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_soyas"]
+texture = ExtResource("1_ic8sh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l82yg"]
+texture = ExtResource("2_raycc")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ic8sh"]
+texture = ExtResource("2_raycc")
+
+[node name="Node2D" type="Node"]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 72.0
+offset_top = 133.0
+offset_right = 322.0
+offset_bottom = 208.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_soyas")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_l82yg")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ic8sh")
+icon = ExtResource("1_ic8sh")
+flat = true
