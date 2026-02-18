@@ -19,7 +19,6 @@ theme_override_constants/separation = -15
 layout_mode = 2
 
 [node name="Background" type="NinePatchRect" parent="VBoxContainer/MarginContainer"]
-modulate = Color(1, 0.7176471, 0, 1)
 custom_minimum_size = Vector2(200, 75)
 layout_mode = 2
 theme = SubResource("Theme_lb7dq")

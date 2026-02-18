@@ -15,7 +15,9 @@ extends Node
 
 #50f31e for signal
 #e95d35 for engine
-#ffb700 for entry
+#ffb700 for entry & controller
+#c82eca (purple)
+#239bff (blue)
 
 const BLOCK_ELEMENT_PATTERN = r"\{(\w+):(\w+)(?:\((.*?)\))?\}"
 
