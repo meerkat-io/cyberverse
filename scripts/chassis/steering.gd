@@ -9,6 +9,8 @@ signal level_passed
 
 @export var pre_populate_components: Array[String] = []
 
+@export var is_in_map := false
+
 var _power := 0.8
 var _steering_angle := 0.0
 var _current_speed := 0.0
@@ -32,6 +34,9 @@ func _ready() -> void:
 				component_instance.get_node("Animation").play("forward_run")
 
 func _physics_process(delta: float) -> void:
+	if not is_in_map:
+		return
+		
 	_simulate_movement(delta)
 	move_and_slide() # Let Godot's physics engine handle movement and collision
 	_check_collision()
