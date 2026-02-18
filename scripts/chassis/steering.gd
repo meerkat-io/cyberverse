@@ -26,6 +26,10 @@ func _ready() -> void:
 			var component_instance := component_scene.instantiate() as Component
 			if component_instance:
 				_equip_component_to_slot(component_instance, slots[i])
+			if component_instance.component_type == Component.ComponentType.BATTERY:
+				component_instance.get_node("Animation").play("start")
+			if component_instance.component_type == Component.ComponentType.ENGINE:
+				component_instance.get_node("Animation").play("forward_run")
 
 func _physics_process(delta: float) -> void:
 	_simulate_movement(delta)
@@ -57,9 +61,14 @@ func _simulate_movement(delta: float) -> void:
 	# Update animations
 	for anim in wheels_animation:
 		if _current_speed > 10.0:
-			if not anim.is_playing(): anim.play()
+			# If the speed is high, play the "run" animation.
+			# This check ensures we play "run" even if another animation was active.
+			if anim.animation != "run" or not anim.is_playing():
+				anim.play("run")
 		else:
-			if anim.is_playing(): anim.stop()
+			# If the speed is low, stop the animation.
+			if anim.is_playing():
+				anim.stop()
 
 func _check_collision() -> void:
 	# Simple distance check for trophies since we are Node2D
