@@ -9,3 +9,4 @@ display_template = "Set the power level for {motor:list} to {power:int(min:0, ma
 data_source = Dictionary[String, String]({
 "motor": "motor_list"
 })
+tint = Color(0.9137255, 0.3647059, 0.20784314, 1)

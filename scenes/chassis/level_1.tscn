@@ -52,13 +52,14 @@ texture = ExtResource("1_5q5id")
 
 [node name="GeneralSlot1" parent="." instance=ExtResource("5_pbtcp")]
 offset_left = -128.0
-offset_bottom = 128.0
+offset_top = -10.0
+offset_bottom = 118.0
 tile_span = Vector2i(2, 1)
 
 [node name="GeneralSlot2" parent="." instance=ExtResource("5_pbtcp")]
 offset_left = -128.0
-offset_top = -136.0
-offset_bottom = -8.0
+offset_top = -146.0
+offset_bottom = -18.0
 tile_span = Vector2i(2, 1)
 
 [node name="EngineSlot" parent="." instance=ExtResource("5_pbtcp")]

@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxhc8s8ncbl4j"]
+[gd_scene load_steps=7 format=3 uid="uid://bxhc8s8ncbl4j"]
 
 [ext_resource type="PackedScene" uid="uid://74m1mwt8ys4k" path="res://code_blocks/scenes/blocks/engine/set_power.tscn" id="1_mgsbt"]
 [ext_resource type="PackedScene" uid="uid://b2dqfop8e5srx" path="res://code_blocks/scenes/blocks/entry/on_start.tscn" id="2_tafhq"]
+[ext_resource type="PackedScene" uid="uid://celnrbbcky4r4" path="res://code_blocks/scenes/blocks/entry/on_signal.tscn" id="3_p6fnx"]
+[ext_resource type="PackedScene" uid="uid://das1ki506slc4" path="res://code_blocks/scenes/blocks/entry/on_tick.tscn" id="4_waj40"]
+[ext_resource type="PackedScene" uid="uid://br4ecxlwwavx4" path="res://code_blocks/scenes/blocks/engine/stop_motor.tscn" id="5_waj40"]
+[ext_resource type="PackedScene" uid="uid://dpbpdvr6smrh" path="res://code_blocks/scenes/blocks/control/wait.tscn" id="6_o741t"]
 
 [node name="Blocks" type="Node2D"]
 
@@ -19,3 +23,18 @@ position = Vector2(914, 345)
 
 [node name="SetPower4" parent="." instance=ExtResource("1_mgsbt")]
 position = Vector2(930, 772)
+
+[node name="OnSignal" parent="." instance=ExtResource("3_p6fnx")]
+position = Vector2(434, 695)
+
+[node name="OnTick" parent="." instance=ExtResource("4_waj40")]
+position = Vector2(250, 555)
+
+[node name="StopMotor" parent="." instance=ExtResource("5_waj40")]
+position = Vector2(1237, 581)
+
+[node name="StopMotor2" parent="." instance=ExtResource("5_waj40")]
+position = Vector2(1258, 718)
+
+[node name="Wait" parent="." instance=ExtResource("6_o741t")]
+position = Vector2(714, 823)
