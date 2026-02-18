@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ctkhoh47uphp5"]
 
 [ext_resource type="Script" uid="uid://0y577vaiad3r" path="res://scripts/ui/inventory.gd" id="1_avmd0"]
-[ext_resource type="Texture2D" uid="uid://bxllqlpkr4jd3" path="res://assets/sprites/ui/inventory.jpg" id="2_xeaml"]
+[ext_resource type="Texture2D" uid="uid://c3javh2ys3xls" path="res://assets/sprites/ui/inventory.png" id="2_xeaml"]
 [ext_resource type="FontFile" uid="uid://c5gom86e4fait" path="res://assets/fonts/NotoSans.ttf" id="3_5yy05"]
 
 [node name="Inventory" type="Control"]
@@ -12,7 +12,7 @@ script = ExtResource("1_avmd0")
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 835.0
-offset_bottom = 1080.0
+offset_bottom = 960.0
 texture = ExtResource("2_xeaml")
 
 [node name="Title" type="Label" parent="."]
