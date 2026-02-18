@@ -9,3 +9,4 @@ position = Vector2(355, 520)
 rotation = 1.5707964
 scale = Vector2(0.5, 0.5)
 pre_populate_components = Array[String](["res://scenes/component/intelligent_module/level_1.tscn", "res://scenes/component/energy_cell/level_1.tscn", "res://scenes/component/engine/level_1.tscn"])
+is_in_map = true

@@ -11,6 +11,8 @@ signal level_passed
 
 @export var is_in_map := false
 
+@onready var camera_2d: Camera2D = $Camera2D
+
 var _power := 0.8
 var _steering_angle := 0.0
 var _current_speed := 0.0
@@ -32,6 +34,8 @@ func _ready() -> void:
 				component_instance.get_node("Animation").play("start")
 			if component_instance.component_type == Component.ComponentType.ENGINE:
 				component_instance.get_node("Animation").play("forward_run")
+
+	camera_2d.enabled = is_in_map
 
 func _physics_process(delta: float) -> void:
 	if not is_in_map:
