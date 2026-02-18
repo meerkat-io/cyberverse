@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://18psybjg8yty"]
+[gd_scene load_steps=29 format=3 uid="uid://18psybjg8yty"]
 
 [ext_resource type="Script" uid="uid://dr5qs2bdvqyvl" path="res://scripts/ui/game_menu.gd" id="1_g8oa6"]
 [ext_resource type="Texture2D" uid="uid://dss8dvq6encnc" path="res://assets/sprites/ui/background.jpg" id="2_3rbob"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://cl2qg3fi1dwxj" path="res://assets/sprites/shopicons/shop.png" id="10_ah5xx"]
 [ext_resource type="Texture2D" uid="uid://dvsjnft53xcna" path="res://assets/sprites/shopicons/quest.png" id="11_nrj1f"]
 [ext_resource type="Texture2D" uid="uid://clqfsm65xjh4i" path="res://assets/sprites/shopicons/loot.jpg" id="12_1rrd4"]
-[ext_resource type="Script" uid="uid://banixrw7u6jsv" path="res://scenes/ui/player_data.gd" id="12_ioip1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g8oa6"]
 content_margin_left = 0.0
@@ -341,7 +340,6 @@ text = "confirm and enter
 layout_mode = 2
 
 [node name="Menu" type="PanelContainer" parent="."]
-visible = false
 custom_minimum_size = Vector2(500, 450)
 layout_mode = 1
 anchors_preset = 8
@@ -448,16 +446,6 @@ offset_right = 1745.0
 offset_bottom = 672.0
 icon = ExtResource("12_1rrd4")
 expand_icon = true
-
-[node name="PlayerData" type="Node" parent="."]
-script = ExtResource("12_ioip1")
-
-[node name="Label" type="Label" parent="PlayerData"]
-offset_left = 1516.0
-offset_top = 42.0
-offset_right = 1556.0
-offset_bottom = 65.0
-text = "ddf gh"
 
 [connection signal="button_down" from="options/Back" to="." method="_on_back_button_down"]
 [connection signal="pressed" from="options/Cheat/VBoxContainer/try" to="options/Cheat" method="_on_try_pressed"]

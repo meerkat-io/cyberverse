@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 
 
 
-var cheats = ["KmeAMI","DEATHNOTE", "ALLUNLOCK"]
+var cheats = ["2012390","Max", "ALLUNLOCK"]
 
 func _on_try_pressed():
 	var input_code = input1_code.text.strip_edges().to_upper()
