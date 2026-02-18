@@ -17,7 +17,7 @@ var _power := 0.8
 var _steering_angle := 0.0
 var _current_speed := 0.0
 
-const MAX_SPEED := 500.0
+const MAX_SPEED := 800.0
 const ACCELERATION := 300.0
 const FRICTION := 100.0
 

@@ -90,18 +90,19 @@ scale = Vector2(0.5, 0.5)
 pre_populate_components = Array[String](["res://scenes/component/intelligent_module/level_1.tscn", "res://scenes/component/energy_cell/level_1.tscn", "res://scenes/component/engine/level_1.tscn"])
 is_in_map = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="StaticBody2D" parent="."]
 position = Vector2(4151, 510.49997)
 scale = Vector2(1.2588464, 1.2588464)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(0.9999998, 0.9999998)
-shape = SubResource("RectangleShape2D_ec031")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 position = Vector2(-699.0526, -0.39717245)
 scale = Vector2(0.9999998, 0.9999998)
 texture = ExtResource("3_j6krj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-699.0526, -1.191534)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_ec031")
 
 [node name="StopButton" type="Button" parent="."]
 custom_minimum_size = Vector2(150, 150)
