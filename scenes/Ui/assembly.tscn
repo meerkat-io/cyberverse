@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c710rwy4if58m"]
+[gd_scene load_steps=5 format=3 uid="uid://c710rwy4if58m"]
 
 [ext_resource type="PackedScene" uid="uid://ctkhoh47uphp5" path="res://scenes/ui/inventory.tscn" id="1_4e5bs"]
 [ext_resource type="Script" uid="uid://bsptx885r3ntm" path="res://scripts/ui/assembly.gd" id="1_p0phh"]
-[ext_resource type="PackedScene" uid="uid://ydpsw6gl7aw8" path="res://scenes/components/chassis/level_1.tscn" id="3_p1fsb"]
+[ext_resource type="Texture2D" uid="uid://ijd43uctup71" path="res://assets/sprites/ui/chassis_bg.png" id="2_urjvv"]
+[ext_resource type="PackedScene" uid="uid://ydpsw6gl7aw8" path="res://scenes/chassis/level_1.tscn" id="3_p1fsb"]
 
 [node name="Assembly" type="Control"]
 custom_minimum_size = Vector2(1920, 1080)
@@ -11,6 +12,7 @@ anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("1_p0phh")
+metadata/_edit_horizontal_guides_ = [134.0, 938.0]
 
 [node name="Background" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(1920, 1080)
@@ -18,6 +20,22 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0.14117648, 0.14117648, 0.14901961, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.163
+anchor_right = 0.21
+anchor_bottom = 0.304
+offset_top = -60.04001
+offset_right = 430.72
+offset_bottom = 627.68005
+texture = ExtResource("2_urjvv")
+patch_margin_left = 131
+patch_margin_top = 139
+patch_margin_right = 131
+patch_margin_bottom = 131
 
 [node name="Inventory" parent="." instance=ExtResource("1_4e5bs")]
 custom_minimum_size = Vector2(835, 1080)
@@ -34,11 +52,13 @@ grow_horizontal = 0
 custom_minimum_size = Vector2(470, 640)
 layout_mode = 1
 anchor_left = 0.145
-anchor_top = 0.189
+anchor_top = 0.257
 anchor_right = 0.168
-anchor_bottom = 0.203
-offset_right = 40.0
-offset_bottom = 40.0
+anchor_bottom = 0.266
+offset_top = -57.559998
+offset_right = 425.84003
+offset_bottom = 572.72
 
-[node name="Chassis" parent="AutoBot" instance=ExtResource("3_p1fsb")]
+[node name="Chassis" parent="AutoBot" node_paths=PackedStringArray("wheels_animation") instance=ExtResource("3_p1fsb")]
 position = Vector2(235, 320)
+wheels_animation = [NodePath("RearLeftWheel"), NodePath("RearRightWheel"), null, null]
