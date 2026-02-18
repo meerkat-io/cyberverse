@@ -1,9 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvcs023gssswg"]
+[gd_scene load_steps=5 format=3 uid="uid://cl4kkgsox5j74"]
 
-[ext_resource type="Texture2D" uid="uid://0s5diot6f15a" path="res://assets/sprites/tilemap/tileset.png" id="1_u3n0t"]
+[ext_resource type="Texture2D" uid="uid://0s5diot6f15a" path="res://assets/sprites/tilemap/tileset.png" id="1_fikxc"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fknvi"]
-texture = ExtResource("1_u3n0t")
+[sub_resource type="TileSet" id="TileSet_vmjrg"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_al3yf"]
+texture = ExtResource("1_fikxc")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 1:0/0 = 0
@@ -47,14 +49,18 @@ texture_region_size = Vector2i(128, 128)
 6:2/0 = 0
 5:2/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_q38l1"]
+[sub_resource type="TileSet" id="TileSet_pktpl"]
 tile_size = Vector2i(128, 128)
-sources/39 = SubResource("TileSetAtlasSource_fknvi")
+sources/39 = SubResource("TileSetAtlasSource_al3yf")
 tile_proxies/coords_level = [[1, Vector2i(0, 0)], [30, Vector2i(0, 0)], [2, Vector2i(0, 0)], [30, Vector2i(1, 0)], [3, Vector2i(0, 0)], [30, Vector2i(2, 0)], [4, Vector2i(0, 0)], [30, Vector2i(3, 0)], [5, Vector2i(0, 0)], [30, Vector2i(4, 0)], [6, Vector2i(0, 0)], [30, Vector2i(5, 0)], [7, Vector2i(0, 0)], [30, Vector2i(6, 0)], [8, Vector2i(0, 0)], [30, Vector2i(7, 0)], [9, Vector2i(0, 0)], [30, Vector2i(8, 0)], [10, Vector2i(0, 0)], [30, Vector2i(9, 0)], [11, Vector2i(0, 0)], [30, Vector2i(10, 0)], [12, Vector2i(0, 0)], [30, Vector2i(11, 0)], [13, Vector2i(0, 0)], [30, Vector2i(12, 0)], [14, Vector2i(0, 0)], [30, Vector2i(13, 0)], [15, Vector2i(0, 0)], [30, Vector2i(14, 0)], [16, Vector2i(0, 0)], [30, Vector2i(15, 0)], [17, Vector2i(0, 0)], [30, Vector2i(0, 1)], [18, Vector2i(0, 0)], [30, Vector2i(1, 1)], [19, Vector2i(0, 0)], [30, Vector2i(2, 1)], [20, Vector2i(0, 0)], [30, Vector2i(3, 1)], [21, Vector2i(0, 0)], [30, Vector2i(4, 1)], [22, Vector2i(0, 0)], [30, Vector2i(5, 1)], [23, Vector2i(0, 0)], [30, Vector2i(6, 1)], [24, Vector2i(0, 0)], [30, Vector2i(7, 1)], [25, Vector2i(0, 0)], [30, Vector2i(8, 1)], [26, Vector2i(0, 0)], [30, Vector2i(9, 1)], [27, Vector2i(0, 0)], [30, Vector2i(10, 1)], [28, Vector2i(0, 0)], [30, Vector2i(11, 1)], [29, Vector2i(0, 0)], [30, Vector2i(12, 1)], [30, Vector2i(0, 0)], [32, Vector2i(0, 0)], [30, Vector2i(0, 1)], [32, Vector2i(0, 1)], [30, Vector2i(1, 0)], [32, Vector2i(1, 0)], [30, Vector2i(1, 1)], [32, Vector2i(1, 1)], [30, Vector2i(2, 0)], [32, Vector2i(2, 0)], [30, Vector2i(2, 1)], [32, Vector2i(2, 1)], [30, Vector2i(3, 0)], [32, Vector2i(3, 0)], [30, Vector2i(3, 1)], [32, Vector2i(3, 1)], [30, Vector2i(4, 0)], [32, Vector2i(4, 0)], [30, Vector2i(4, 1)], [32, Vector2i(4, 1)], [30, Vector2i(5, 0)], [32, Vector2i(5, 0)], [30, Vector2i(5, 1)], [32, Vector2i(5, 1)], [30, Vector2i(6, 0)], [32, Vector2i(6, 0)], [30, Vector2i(6, 1)], [32, Vector2i(6, 1)], [30, Vector2i(7, 0)], [32, Vector2i(7, 0)], [30, Vector2i(7, 1)], [32, Vector2i(7, 1)], [30, Vector2i(8, 0)], [32, Vector2i(8, 0)], [30, Vector2i(8, 1)], [32, Vector2i(8, 1)], [30, Vector2i(9, 0)], [32, Vector2i(9, 0)], [30, Vector2i(9, 1)], [32, Vector2i(9, 1)], [30, Vector2i(10, 0)], [32, Vector2i(10, 0)], [30, Vector2i(10, 1)], [32, Vector2i(10, 1)], [30, Vector2i(11, 0)], [32, Vector2i(11, 0)], [30, Vector2i(11, 1)], [32, Vector2i(11, 1)], [30, Vector2i(12, 0)], [32, Vector2i(12, 0)], [30, Vector2i(12, 1)], [32, Vector2i(12, 1)], [30, Vector2i(13, 0)], [32, Vector2i(13, 0)], [30, Vector2i(14, 0)], [32, Vector2i(14, 0)], [30, Vector2i(15, 0)], [32, Vector2i(15, 0)], [31, Vector2i(0, 0)], [32, Vector2i(0, 2)]]
 
-[node name="Tilemap" type="Node2D"]
+[node name="Map1" type="Node"]
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_q38l1")
+tile_set = SubResource("TileSet_vmjrg")
 format = 2
-layer_0/tile_data = PackedInt32Array(262153, 196647, 0, 262154, 196647, 0, 262156, 196647, 0, 131083, 196647, 0, 131082, 196647, 0, 196618, 196647, 0, 196619, 196647, 0, 196621, 196647, 0, 11, 196647, 0, 10, 196647, 0, -65526, 196647, 0, -196601, 196647, 0, -196602, 196647, 0, -196603, 196647, 0, -196604, 196647, 0, -196605, 196647, 0, -196606, 196647, 0, -196607, 196647, 0, -196608, 196647, 0, 327692, 196647, 0, 458766, 196647, 0, 458767, 196647, 0, 458762, 196647, 0, 393226, 196647, 0, 262143, 196647, 0, 393213, 196647, 0, -65537, 196647, 0, 327682, 196647, 0, -262142, 196647, 0, -262143, 196647, 0, -262144, 196647, 0, -196609, 196647, 0, -131070, 196647, 0, -131073, 196647, 0, 393205, 196647, 0, 393206, 196647, 0, 393208, 196647, 0, 458745, 196647, 0, 458746, 196647, 0, 1, 327719, 1, 2, 393255, 1, 65538, 393255, 2, 65537, 327719, 2, 3, 458791, 1, -65536, 917543, 1, -65535, 786471, 2, -65534, 786471, 2, -65533, 786471, 2, 65539, 917543, 1, 131072, 852007, 1, 131075, 917543, 0, 65540, 917543, 0, -65532, 983079, 1, 0, 720935, 2, 65536, 720935, 2, 4, 720935, 2, 131074, 786471, 2, 131073, 786471, 2, 196608, 720935, 1, 196609, 720935, 1, 196610, 720935, 1, 196611, 720935, 1, 196612, 720935, 1, 131076, 720935, 1, 131077, 720935, 1, 65541, 720935, 1, 5, 720935, 1, -65531, 720935, 1, -65530, 720935, 1, -65529, 720935, 1, -65528, 720935, 1, 8, 720935, 1, 65544, 720935, 1, 131080, 720935, 1, -131068, 655399, 1, -131067, 655399, 1, -131066, 655399, 1, -131065, 655399, 1, -131064, 655399, 1, -131063, 655399, 1, -65527, 655399, 1, 9, 655399, 1, 65545, 655399, 1, 131081, 655399, 1, 6, 327719, 0, 7, 393255, 0, 65542, 458791, 0, 131078, 458791, 0, 196613, 458791, 0, 262149, 589863, 0, 262151, 655399, 0, 196615, 524327, 0, 131079, 524327, 0, 65543, 524327, 0, 196614, 262183, 0, 262150, 262183, 0, 327687, 720935, 1, 327686, 720935, 1, 327685, 720935, 1, 327684, 720935, 1, 262148, 720935, 1, 262146, 720935, 1, 262147, 720935, 1, 262145, 720935, 1)
+
+[node name="TileMap" type="TileMap" parent="TileMap"]
+tile_set = SubResource("TileSet_pktpl")
+format = 2
+layer_0/tile_data = PackedInt32Array(-65538, 786471, 2, -65537, 786471, 2, -131072, 786471, 2, 131070, 917543, 1, 196606, 720935, 2, 262142, 917543, 0, 262141, 852007, 0, 131071, 786471, 2, 65536, 786471, 2, 65537, 131111, 1, -2, 39, 2, -1, 39, 2, -65536, 720935, 1, 65534, 39, 2, 65535, 720935, 1, 0, 720935, 1, 1, 720935, 1, -65535, 39, 2, 2, 39, 2, -65534, 39, 2, 3, 39, 2, -65533, 720935, 1, 4, 720935, 1, -65532, 720935, 1, -65531, 720935, 1, 5, 39, 2, 6, 39, 2, -65530, 39, 2, 131069, 65575, 0, 65533, 65575, 0, -3, 917543, 2, -65539, 917543, 1, 196605, 65575, 0, -131075, 327719, 2, -131074, 393255, 2, 65538, 262183, 1, 65539, 65575, 0, 65540, 65575, 0, 65541, 65575, 0, 65542, 65575, 0, -131071, 786471, 2, -131070, 786471, 2, -131069, 786471, 2, -131068, 983079, 2, -131067, 65575, 0, -131066, 65575, 0)
