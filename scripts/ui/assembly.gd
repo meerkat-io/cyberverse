@@ -3,7 +3,7 @@ extends Control
 
 @onready var inventory: Inventory = $Inventory
 
-@onready var chassis: CharacterBody2D = $AutoBot/Chassis
+@onready var chassis: SteeringSmartCar = $AutoBot/Chassis
 
 func _ready() -> void:
 	# In the future, you can get references to your inventory and

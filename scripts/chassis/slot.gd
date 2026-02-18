@@ -14,6 +14,11 @@ const SLOT_COLORS := {
 	SlotType.WEAPON: Color("#ff44ff80")
 }
 
+const SLOT_COMPONENTS := {
+	SlotType.GENERAL: [Component.ComponentType.BATTERY, Component.ComponentType.CPU],
+	SlotType.ENGINE: [Component.ComponentType.ENGINE]
+}
+
 func _ready() -> void:
 	color = SLOT_COLORS.get(slot_type, Color("#447cff80"))
 	custom_minimum_size = tile_span * 128
