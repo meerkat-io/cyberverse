@@ -6,3 +6,4 @@
 
 [node name="EntryBlock" parent="." instance=ExtResource("1_y3rp1")]
 display_template = "On signal"
+tint = Color(0.3137255, 0.9529412, 0.11764706, 1)

@@ -6,3 +6,4 @@
 
 [node name="EntryBlock" parent="." instance=ExtResource("1_xc55t")]
 display_template = "On start"
+tint = Color(1, 0.7176471, 0, 1)

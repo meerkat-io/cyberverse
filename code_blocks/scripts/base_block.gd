@@ -7,7 +7,15 @@ extends Node
 
 @export var data_source: Dictionary[String, String]
 
+@export var tint: Color = Color("#FFFFFF")
+
 @onready var _content: BlockContent = $VBoxContainer/MarginContainer/MarginContainer/Content
+
+@onready var _background: NinePatchRect = $VBoxContainer/MarginContainer/Background
+
+#50f31e for signal
+#e95d35 for engine
+#ffb700 for entry
 
 const BLOCK_ELEMENT_PATTERN = r"\{(\w+):(\w+)(?:\((.*?)\))?\}"
 
@@ -22,7 +30,7 @@ func _init() -> void:
 func _ready() -> void:
 	var elements = _parse_display_template(display_template)
 	_content.build_block(elements)
-
+	_background.modulate = tint
 
 func _parse_display_template(p_template: String) -> Array[BlockElement]:
 	var elements: Array[BlockElement] = []
