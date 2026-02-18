@@ -1,10 +1,12 @@
 class_name Inventory
 extends Control
 
+signal component_dropped_outside(component: Component, drop_position: Vector2)
+
 ## The size of the grid in cells (e.g., 6x6).
-@export var grid_size: Vector2i = Vector2i(6, 6)
+const grid_size: Vector2i = Vector2i(6, 6)
 ## The size of each grid cell in pixels.
-@export var cell_size: Vector2i = Vector2i(128, 128)
+const cell_size: Vector2i = Vector2i(128, 128)
 
 @onready var container: Control = $Container
 
@@ -31,6 +33,16 @@ func add_component(component: Component, grid_pos: Vector2i) -> bool:
 	
 	_place_component(component, grid_pos)
 	return true
+
+## Tries to add a component at a specific global position (e.g. dropped from chassis).
+func try_add_component_at(component: Component, global_drop_pos: Vector2) -> bool:
+	var container_rect := container.get_global_rect()
+	if not container_rect.has_point(global_drop_pos + cell_size * 0.5):
+		return false
+	
+	var local_drop_pos := global_drop_pos - container_rect.position
+	var grid_pos := _local_to_grid_coords(local_drop_pos)
+	return add_component(component, grid_pos)
 
 ## Checks if a component can be placed at the given coordinates.
 func can_place(component: Component, grid_pos: Vector2i) -> bool:
@@ -86,10 +98,12 @@ func _on_component_drag_ended(drop_position: Vector2, component: Component) -> v
 	else:
 		# Dropped outside: The AssemblyUI could handle this.
 		# For now, return it to its original spot.
-		print("Component dropped outside inventory.")
-		# The AssemblyUI should listen for this and decide what to do.
-		# For now, we just put it back.
-		_place_component(component, component.grid_position)
+		component_dropped_outside.emit(component, drop_position)
+		
+		# If the component is still a child of container, it means it wasn't handled externally.
+		if component.get_parent() == container:
+			print("Component dropped outside inventory.")
+			_place_component(component, component.grid_position)
 
 func _place_component(component: Component, grid_pos: Vector2i) -> void:
 	if component.get_parent() != container:

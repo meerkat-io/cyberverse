@@ -22,3 +22,9 @@ const SLOT_COMPONENTS := {
 func _ready() -> void:
 	color = SLOT_COLORS.get(slot_type, Color("#447cff80"))
 	custom_minimum_size = tile_span * 128
+
+func accepts_component(component: Component) -> bool:
+	if component.tile_span != tile_span:
+		return false
+	var allowed_types = SLOT_COMPONENTS.get(slot_type, [])
+	return component.component_type in allowed_types
