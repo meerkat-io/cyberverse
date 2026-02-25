@@ -228,3 +228,87 @@ func test_not() -> void:
 	var task = _vm.add_task(bytecode)
 	_vm.tick()
 	assert_eq(task.pop_stack(), ~9)
+
+func test_add_fixed() -> void:
+	var bytecode = _assembler.assemble(
+	"""
+		PUSH 1
+		INT_TO_FIXED
+		PUSH 2
+		INT_TO_FIXED
+		ADD_FIXED
+	""")
+	var task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 3 << 16)
+
+func test_sub_fixed() -> void:
+	var bytecode = _assembler.assemble(
+	"""
+		PUSH 5
+		INT_TO_FIXED
+		PUSH 3
+		INT_TO_FIXED
+		SUB_FIXED
+	""")
+	var task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 2 << 16)
+
+func test_mul_fixed() -> void:
+	var bytecode = _assembler.assemble(
+	"""
+		PUSH 5
+		INT_TO_FIXED
+		PUSH 3
+		INT_TO_FIXED
+		MUL_FIXED
+	""")
+	var task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 15 << 16)
+
+func test_div_fixed() -> void:
+	var bytecode = _assembler.assemble(
+	"""
+		PUSH 10
+		INT_TO_FIXED
+		PUSH 5
+		INT_TO_FIXED
+		DIV_FIXED
+	""")
+	var task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 2 << 16)
+
+func test_neg_fixed() -> void:
+	var bytecode = _assembler.assemble(
+	"""
+		PUSH 5
+		INT_TO_FIXED
+		NEG_FIXED
+	""")
+	var task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), -(5 << 16))
+
+func test_int_to_fixed() -> void:
+	var bytecode = _assembler.assemble(
+	"""
+		PUSH 5
+		INT_TO_FIXED
+	""")
+	var task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 5 << 16)
+
+func test_fixed_to_int() -> void:
+	var bytecode = _assembler.assemble(
+	"""
+		PUSH 5
+		INT_TO_FIXED
+		FIXED_TO_INT
+	""")
+	var task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 5)
