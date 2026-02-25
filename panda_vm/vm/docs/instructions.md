@@ -27,6 +27,7 @@ This instruction set is designed for a stack-based VM with tasks and syscalls. O
 | POP R3 | Pop stack to register R3 | POP R3 | 0x17 |
 | DUP | Duplicate top of stack | DUP | 0x18 |
 | SWAP | Swap top two stack elements | SWAP | 0x19 |
+| DROP | Drop top stack element | DROP | 0x1A |
 
 ### Integer Arithmetic
 

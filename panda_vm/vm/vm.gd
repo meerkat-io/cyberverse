@@ -96,6 +96,8 @@ func tick():
 					var second = task.pop_stack()
 					task.push_stack(top)
 					task.push_stack(second)
+				0x1A: # DROP
+					task.pop_stack()
 				
 				# Integer Arithmetic
 				0x20: # ADD_INT
@@ -113,6 +115,7 @@ func tick():
 				0x23: # DIV_INT
 					var b = task.pop_stack()
 					var a = task.pop_stack()
+					@warning_ignore("integer_division")
 					task.push_stack(a / b) # integer division
 				0x24: # MOD_INT
 					var b = task.pop_stack()
@@ -153,6 +156,7 @@ func tick():
 				0x43: # DIV_FIXED
 					var b = task.pop_stack()
 					var a = task.pop_stack()
+					@warning_ignore("integer_division")
 					task.push_stack((a << 16) / b)
 				0x44: # NEG_FIXED
 					var a = task.pop_stack()

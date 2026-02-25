@@ -9,3 +9,20 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+'''
+; comment
+start:
+    PUSH 10
+    INT_TO_FIXED
+    CALL foo
+    JMP end
+
+foo:
+    LOAD_LOCAL 0
+    ADD_INT
+    RET
+
+end:
+    TASK TASK_EXIT
+'''

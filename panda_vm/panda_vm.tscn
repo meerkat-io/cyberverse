@@ -1,3 +1,3 @@
 [gd_scene format=3 uid="uid://cb12yxym2fuxi"]
 
-[node name="PandaVm" type="Node2D"]
+[node name="PandaVm" type="Node2D" unique_id=1184648322]
