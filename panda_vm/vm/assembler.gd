@@ -87,12 +87,6 @@ func assemble(source: String) -> PackedByteArray:
 		var parts = line.split(" ", false)
 		var inst = parts[0]
 
-		# ---- registers sugar ----
-		if inst == "PUSH" and parts[1].begins_with("R"):
-			inst = "PUSH_" + parts[1]
-		elif inst == "POP" and parts[1].begins_with("R"):
-			inst = "POP_" + parts[1]
-
 		var opcode = OPCODES.get(inst, -1)
 		if opcode == -1:
 			push_error("Unknown instruction: %s" % inst)

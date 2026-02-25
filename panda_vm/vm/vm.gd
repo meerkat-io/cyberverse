@@ -80,21 +80,21 @@ func tick():
 						locals[idx] = task.pop_stack()
 					
 					# Stack Operations
-					0x10: # PUSH R0
+					0x10: # PUSH_R0
 						task.push_stack(registers[0])
-					0x11: # POP R0
+					0x11: # POP_R0
 						registers[0] = task.pop_stack()
-					0x12: # PUSH R1
+					0x12: # PUSH_R1
 						task.push_stack(registers[1])
-					0x13: # POP R1
+					0x13: # POP_R1
 						registers[1] = task.pop_stack()
-					0x14: # PUSH R2
+					0x14: # PUSH_R2
 						task.push_stack(registers[2])
-					0x15: # POP R2
+					0x15: # POP_R2
 						registers[2] = task.pop_stack()
-					0x16: # PUSH R3
+					0x16: # PUSH_R3
 						task.push_stack(registers[3])
-					0x17: # POP R3
+					0x17: # POP_R3
 						registers[3] = task.pop_stack()
 					0x18: # DUP
 						task.push_stack(task.peek_stack())
