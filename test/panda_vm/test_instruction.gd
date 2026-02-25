@@ -312,3 +312,205 @@ func test_fixed_to_int() -> void:
 	var task = _vm.add_task(bytecode)
 	_vm.tick()
 	assert_eq(task.pop_stack(), 5)
+
+func test_cmp_eq_int() -> void:
+	var bytecode = _assembler.assemble(
+	"""
+		PUSH 5
+		PUSH 5
+		CMP_EQ_INT
+	""")
+	var task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 1)
+
+	bytecode = _assembler.assemble(
+	"""
+		PUSH 5
+		PUSH 4
+		CMP_EQ_INT
+	""")
+	_vm.reset()
+	task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 0)
+
+func test_cmp_ne_int() -> void:
+	var bytecode = _assembler.assemble(
+	"""
+		PUSH 5
+		PUSH 5
+		CMP_NE_INT
+	""")
+	var task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 0)
+
+	bytecode = _assembler.assemble(
+	"""
+		PUSH 5
+		PUSH 4
+		CMP_NE_INT
+	""")
+	_vm.reset()
+	task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 1)
+
+func test_cmp_lt_int() -> void:
+	var bytecode = _assembler.assemble(
+	"""
+		PUSH 4
+		PUSH 5
+		CMP_LT_INT
+	""")
+	var task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 1)
+
+	bytecode = _assembler.assemble(
+	"""
+		PUSH 5
+		PUSH 5
+		CMP_LT_INT
+	""")
+	_vm.reset()
+	task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 0)
+
+	bytecode = _assembler.assemble(
+	"""
+		PUSH 6
+		PUSH 5
+		CMP_LT_INT
+	""")
+	_vm.reset()
+	task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 0)
+
+func test_cmp_le_int() -> void:		
+	var bytecode = _assembler.assemble(
+	"""
+		PUSH 4
+		PUSH 5
+		CMP_LE_INT
+	""")
+	var task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 1)
+
+	bytecode = _assembler.assemble(
+	"""
+		PUSH 5
+		PUSH 5
+		CMP_LE_INT
+	""")
+	_vm.reset()
+	task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 1)
+
+	bytecode = _assembler.assemble(
+	"""
+		PUSH 6
+		PUSH 5
+		CMP_LE_INT
+	""")
+	_vm.reset()
+	task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 0)
+
+func test_cmp_gt_int() -> void:
+	var bytecode = _assembler.assemble(
+	"""
+		PUSH 5
+		PUSH 6
+		CMP_GT_INT
+	""")
+	var task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 0)
+
+	bytecode = _assembler.assemble(
+	"""
+		PUSH 5
+		PUSH 5
+		CMP_GT_INT
+	""")
+	_vm.reset()
+	task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 0)
+
+	bytecode = _assembler.assemble(
+	"""
+		PUSH 5
+		PUSH 4
+		CMP_GT_INT
+	""")
+	_vm.reset()
+	task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 1)
+
+func test_cmp_ge_int() -> void:
+	var bytecode = _assembler.assemble(
+	"""
+		PUSH 5
+		PUSH 6
+		CMP_GE_INT
+	""")
+	var task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 0)
+
+	bytecode = _assembler.assemble(
+	"""
+		PUSH 5
+		PUSH 5
+		CMP_GE_INT
+	""")
+	_vm.reset()
+	task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 1)
+
+	bytecode = _assembler.assemble(
+	"""
+		PUSH 5
+		PUSH 4
+		CMP_GE_INT
+	""")
+	_vm.reset()
+	task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 1)
+
+func test_cmp_eq_fixed() -> void:
+	var bytecode = _assembler.assemble(
+	"""
+		PUSH 5
+		INT_TO_FIXED
+		PUSH 5
+		INT_TO_FIXED
+		CMP_EQ_FIXED
+	""")
+	var task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 1)
+
+	bytecode = _assembler.assemble(
+	"""
+		PUSH 5
+		INT_TO_FIXED
+		PUSH 4
+		INT_TO_FIXED
+		CMP_EQ_FIXED
+	""")
+	_vm.reset()
+	task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 0)
