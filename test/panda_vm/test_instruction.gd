@@ -1,12 +1,19 @@
 extends GutTest
 
-func before_each():
-	print("before each")
-	
-func add(a: int, b: int) -> int:
-	return a + b
+var _vm: VM = VM.new()
+var _assembler: Assembler = Assembler.new()
 
-func test_add() -> void:
-	assert_eq(add(1, 2), 3)
-	assert_eq(add(0, 0), 0)
-	assert_eq(add(-1, -2), -3)
+func before_each():
+	_vm.reset()
+
+func test_push() -> void:
+	var bytecode = _assembler.assemble(
+	"""
+		PUSH 42
+		PUSH 100
+	""")
+	assert_eq(bytecode.size(), 10) # 2 instructions + 2 * 4 bytes for values
+	var task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 100)
+	assert_eq(task.pop_stack(), 42)

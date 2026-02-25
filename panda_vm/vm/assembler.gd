@@ -1,4 +1,4 @@
-class_name Compiler
+class_name Assembler
 extends RefCounted
 
 # assembler/opcodes.gd
@@ -21,6 +21,7 @@ const OPCODES := {
 	"POP_R3": 0x17,
 	"DUP": 0x18,
 	"SWAP": 0x19,
+	"DROP": 0x1A,
 
 	# Integer
 	"ADD_INT": 0x20,
@@ -72,7 +73,57 @@ const OPCODES := {
 	"TASK": 0x71,
 }
 
-func first_pass(lines: Array) -> Dictionary:
+func assemble(source: String) -> PackedByteArray:
+	var lines = source.split("\n")
+	var labels = _first_pass(lines)
+
+	var bytecode := PackedByteArray()
+
+	for raw_line in lines:
+		var line = raw_line.strip_edges()
+		if line == "" or line.begins_with(";") or line.ends_with(":"):
+			continue
+
+		var parts = line.split(" ", false)
+		var inst = parts[0]
+
+		# ---- registers sugar ----
+		if inst == "PUSH" and parts[1].begins_with("R"):
+			inst = "PUSH_" + parts[1]
+		elif inst == "POP" and parts[1].begins_with("R"):
+			inst = "POP_" + parts[1]
+
+		var opcode = OPCODES.get(inst, -1)
+		if opcode == -1:
+			push_error("Unknown instruction: %s" % inst)
+			return PackedByteArray()
+
+		bytecode.append(opcode)
+
+		match inst:
+			"PUSH":
+				var v = int(parts[1])
+				bytecode.append(v & 0xFF)
+				bytecode.append((v >> 8) & 0xFF)
+				bytecode.append((v >> 16) & 0xFF)
+				bytecode.append((v >> 24) & 0xFF)
+
+			"LOAD_GLOBAL", "STORE_GLOBAL", "LOAD_LOCAL", "STORE_LOCAL":
+				bytecode.append(int(parts[1]))
+
+			"JMP", "JMP_IF_TRUE", "JMP_IF_FALSE", "CALL":
+				var target = parts[1]
+				var addr = labels[target]
+				bytecode.append(addr & 0xFF)
+				bytecode.append((addr >> 8) & 0xFF)
+
+			"SYSCALL", "TASK":
+				# TODO: handle syscall/task args that can be labels
+				bytecode.append(int(parts[1]))
+
+	return bytecode
+
+func _first_pass(lines: Array) -> Dictionary:
 	var labels := {}
 	var pc := 0
 
@@ -99,63 +150,7 @@ func first_pass(lines: Array) -> Dictionary:
 		elif inst in ["JMP", "JMP_IF_TRUE", "JMP_IF_FALSE", "CALL"]:
 			pc += 2
 		elif inst in ["SYSCALL", "TASK"]:
+			# TODO: handle syscall/task args that can be labels
 			pc += 1
 
 	return labels
-
-func assemble(source: String) -> PackedByteArray:
-	var lines = source.split("\n")
-	var labels = first_pass(lines)
-
-	var bytecode := PackedByteArray()
-	var pc := 0
-
-	for raw_line in lines:
-		var line = raw_line.strip_edges()
-		if line == "" or line.begins_with(";") or line.ends_with(":"):
-			continue
-
-		var parts = line.split(" ", false)
-		var inst = parts[0]
-
-		# ---- registers sugar ----
-		if inst == "PUSH" and parts[1].begins_with("R"):
-			inst = "PUSH_" + parts[1]
-		elif inst == "POP" and parts[1].begins_with("R"):
-			inst = "POP_" + parts[1]
-
-		var opcode = OPCODES.get(inst, -1)
-		if opcode == -1:
-			push_error("Unknown instruction: %s" % inst)
-			return PackedByteArray()
-
-		bytecode.append(opcode)
-		pc += 1
-
-		match inst:
-			"PUSH":
-				var v = int(parts[1])
-				emit_i32(bytecode, v)
-
-			"LOAD_GLOBAL", "STORE_GLOBAL", "LOAD_LOCAL", "STORE_LOCAL":
-				bytecode.append(int(parts[1]))
-
-			"JMP", "JMP_IF_TRUE", "JMP_IF_FALSE", "CALL":
-				var target = parts[1]
-				var addr = labels[target]
-				emit_u16(bytecode, addr)
-
-			"SYSCALL", "TASK":
-				bytecode.append(int(parts[1]))
-
-	return bytecode
-
-func emit_i32(out: PackedByteArray, v: int) -> void:
-	out.append(v & 0xFF)
-	out.append((v >> 8) & 0xFF)
-	out.append((v >> 16) & 0xFF)
-	out.append((v >> 24) & 0xFF)
-
-func emit_u16(out: PackedByteArray, v: int) -> void:
-	out.append(v & 0xFF)
-	out.append((v >> 8) & 0xFF)
