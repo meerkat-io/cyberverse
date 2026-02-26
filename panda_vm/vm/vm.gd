@@ -318,6 +318,9 @@ func tick():
 								var signal_id = int(code[pc])
 								pc += 1
 								_signal_queue.append(signal_id)
+							_: # unknown task subcode
+								push_error("Unknown task subcode %s" % sub_code)
+								task.state = Task.State.FINISHED
 
 					# TODO: other extensions should be registered dynamically
 

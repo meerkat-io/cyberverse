@@ -1,7 +1,6 @@
 class_name Assembler
 extends RefCounted
 
-# assembler/opcodes.gd
 const OPCODES := {
 	# Data
 	"PUSH": 0x01,
@@ -121,6 +120,8 @@ func assemble(source: String) -> PackedByteArray:
 			"SYSCALL", "TASK":
 				# TODO: handle syscall/task args that can be labels
 				bytecode.append(int(parts[1]))
+
+			# TODO: handle other dynamic modules
 
 	return bytecode
 

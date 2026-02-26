@@ -27,9 +27,6 @@ var state: State
 var sleep_ticks: int = 0
 var wait_signal: int = 0
 
-# TODO: max call frame depth = 8
-# flatten call frames and locals
-
 func _init(bytecode: PackedByteArray, entry_addr: int):
 	_bytecode = bytecode
 	_entry_addr = entry_addr
