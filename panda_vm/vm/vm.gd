@@ -53,8 +53,7 @@ func tick():
 					task.state = Task.State.FINISHED
 					continue
 					
-				var opcode = code[pc]
-				pc += 1
+				var opcode = code[pc]; pc += 1
 				
 				match opcode:
 					# Data Operations
@@ -63,20 +62,16 @@ func tick():
 						pc += 4
 						task.push_stack(value)
 					0x02: # LOAD_GLOBAL <idx>
-						var idx = code[pc]
-						pc += 1
+						var idx = code[pc]; pc += 1
 						task.push_stack(_globals[idx])
 					0x03: # STORE_GLOBAL <idx>
-						var idx = code[pc]
-						pc += 1
+						var idx = code[pc]; pc += 1
 						_globals[idx] = task.pop_stack()
 					0x04: # LOAD_LOCAL <idx>
-						var idx = code[pc]
-						pc += 1
+						var idx = code[pc]; pc += 1
 						task.push_stack(locals[idx + task._frame * task.LOCALS_PER_FRAME])
 					0x05: # STORE_LOCAL <idx>
-						var idx = code[pc]
-						pc += 1
+						var idx = code[pc]; pc += 1
 						locals[idx + task._frame * task.LOCALS_PER_FRAME] = task.pop_stack()
 					
 					# Stack Operations
@@ -247,14 +242,12 @@ func tick():
 						if cond == 0:
 							pc = addr
 					0x63: # CALL <addr>
-						var addr = int(code[pc]) | int(code[pc + 1]) << 8;
-						pc += 2
+						var addr = int(code[pc]) | int(code[pc + 1]) << 8; pc += 2
 						task._frame += 1
 						if task._frame >= task.MAX_FRAMES:
 							push_error("Max call frame depth exceeded")
 							task.state = Task.State.FINISHED
-						var arg_count = code[pc]
-						pc += 1
+						var arg_count = code[pc]; pc += 1
 						for i in range(arg_count):
 							# args are passed to local variables of the callee in reverse order
 							var arg_value = task.pop_stack()
@@ -269,8 +262,7 @@ func tick():
 
 					# System Calls
 					0x70: # SYSCALL <idx>
-						var sub_code = code[pc]
-						pc += 1
+						var sub_code = code[pc]; pc += 1
 						match sub_code:
 							0x01: # PRINT_INT
 								var value = task.pop_stack()
@@ -279,10 +271,9 @@ func tick():
 								var value = task.pop_stack()
 								print(float(value) / 65536.0)
 							0x03: # PRINT_STR
-								var str_len = int(code[pc])
-								pc += 1
-								var str_bytes = code.subarray(pc, pc + str_len)
-								pc += str_len
+								var addr = int(code[pc]) | int(code[pc + 1]) << 8; pc += 2
+								var str_len = int(code[addr]) | int(code[addr + 1]) << 8
+								var str_bytes = code.subarray(addr + 2, addr + 2 + str_len)
 								var string = String(str_bytes)
 								print(string)
 							_: # unknown syscall
@@ -291,32 +282,28 @@ func tick():
 
 					# Task Management
 					0x71: # TASK
-						var sub_code = code[pc]
-						pc += 1
+						var sub_code = code[pc]; pc += 1
 						match sub_code:
 							0x01: # CREATE <entry_addr>
-								var entry_addr = int(code[pc]) | int(code[pc + 1]) << 8
-								pc += 2
+								var entry_addr = int(code[pc]) | int(code[pc + 1]) << 8; pc += 2
 								var new_task = add_task(code, entry_addr)
 								if new_task == null:
 									task.state = Task.State.FINISHED
 							0x02: # EXIT
 								task.state = Task.State.FINISHED
 							0x03: # SLEEP <ticks>
-								var ticks = int(code[pc]) | int(code[pc + 1]) << 8
-								pc += 2
+								var ticks = int(code[pc]) | int(code[pc + 1]) << 8; pc += 2
 								task._pc = pc
 								task.sleep_ticks = ticks
+								
 								task.state = Task.State.SLEEPING
 							0x04: # WAIT_SIGNAL <signal_id>
-								var signal_id = int(code[pc])
-								pc += 1
+								var signal_id = int(code[pc]); pc += 1
 								task._pc = pc
 								task.wait_signal = signal_id
 								task.state = Task.State.WAITING
 							0x05: # SIGNAL <signal_id>
-								var signal_id = int(code[pc])
-								pc += 1
+								var signal_id = int(code[pc]); pc += 1
 								_signal_queue.append(signal_id)
 							_: # unknown task subcode
 								push_error("Unknown task subcode %s" % sub_code)
