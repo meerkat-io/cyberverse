@@ -7,7 +7,7 @@ func _ready() -> void:
 	var _vm: VM = VM.new()
 	var _assembler: Assembler = Assembler.new()
 	var bytecode = _assembler.assemble(
-    """
+	"""
         PUSH 42
         PUSH 100
 	""")

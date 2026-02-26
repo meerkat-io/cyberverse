@@ -110,6 +110,13 @@ func assemble(source: String) -> PackedByteArray:
 				var addr = labels[target]
 				bytecode.append(addr & 0xFF)
 				bytecode.append((addr >> 8) & 0xFF)
+				if inst == "CALL":
+					# check if parts[2] exists for arg count					
+					if parts.size() >= 3:
+						var arg_count = int(parts[2])
+						bytecode.append(arg_count)
+					else:
+						bytecode.append(0) # no args
 
 			"SYSCALL", "TASK":
 				# TODO: handle syscall/task args that can be labels
@@ -141,8 +148,10 @@ func _first_pass(lines: Array) -> Dictionary:
 			pc += 4
 		elif inst in ["LOAD_GLOBAL", "STORE_GLOBAL", "LOAD_LOCAL", "STORE_LOCAL"]:
 			pc += 1
-		elif inst in ["JMP", "JMP_IF_TRUE", "JMP_IF_FALSE", "CALL"]:
+		elif inst in ["JMP", "JMP_IF_TRUE", "JMP_IF_FALSE"]:
 			pc += 2
+		elif inst == "CALL":
+			pc += 3
 		elif inst in ["SYSCALL", "TASK"]:
 			# TODO: handle syscall/task args that can be labels
 			pc += 1

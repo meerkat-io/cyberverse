@@ -696,3 +696,69 @@ func test_cmp_ge_fixed() -> void:
 	task = _vm.add_task(bytecode)
 	_vm.tick()
 	assert_eq(task.pop_stack(), 1)
+
+func test_jmp() -> void:
+	var bytecode = _assembler.assemble(
+	"""
+		JMP end
+		PUSH 1
+	end:
+		PUSH 2
+	""")
+	var task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 2)
+	assert_eq(task._sp, 0) # stack empty after execution
+
+func test_jmp_if_true() -> void:
+	var bytecode = _assembler.assemble(
+	"""		
+		PUSH 1
+		JMP_IF_TRUE true_label
+		PUSH 0
+		JMP end
+	true_label:
+		PUSH 42
+	end:
+	""")
+	var task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 42)
+	assert_eq(task._sp, 0) # stack empty after execution
+
+func test_jmp_if_false() -> void:
+	var bytecode = _assembler.assemble(
+	"""
+		PUSH 0
+		JMP_IF_FALSE false_label
+		PUSH 0
+		JMP end
+	false_label:
+		PUSH 42
+	end:
+	""")
+	var task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 42)
+	assert_eq(task._sp, 0) # stack empty after execution
+
+func test_call() -> void:
+	var bytecode = _assembler.assemble(
+	"""
+		PUSH 42
+		PUSH 1
+		CALL add 2
+		JMP end
+	add:
+		LOAD_LOCAL 0
+		LOAD_LOCAL 1
+		ADD_INT
+		RET
+	end:
+	""")
+	var task = _vm.add_task(bytecode)
+	_vm.tick()
+	assert_eq(task.pop_stack(), 43)
+	assert_eq(task._locals[8], 42) # first local slot of call frame should have first arg
+	assert_eq(task._locals[9], 1) # second local slot of call frame should have second arg
+	assert_eq(task._frame, 0) # call frame should be cleaned up after RET

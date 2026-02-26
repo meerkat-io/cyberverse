@@ -247,16 +247,25 @@ func tick():
 						if cond == 0:
 							pc = addr
 					0x63: # CALL <addr>
-						var addr = int(code[pc]) | int(code[pc + 1]) << 8; pc += 2
-						task.push_stack(pc)
-						pc = addr
+						var addr = int(code[pc]) | int(code[pc + 1]) << 8;
+						pc += 2
 						task._frame += 1
 						if task._frame >= task.MAX_FRAMES:
 							push_error("Max call frame depth exceeded")
 							task.state = Task.State.FINISHED
+						var arg_count = code[pc]
+						pc += 1
+						for i in range(arg_count):
+							# args are passed to local variables of the callee in reverse order
+							var arg_value = task.pop_stack()
+							locals[(task._frame * task.LOCALS_PER_FRAME) + (arg_count - 1 - i)] = arg_value
+						task.push_stack(pc)
+						pc = addr
 					0x64: # RET
+						var ret_value = task.pop_stack()
 						pc = task.pop_stack()
 						task._frame -= 1
+						task.push_stack(ret_value)
 
 					# System Calls
 					0x70: # SYSCALL <idx>
