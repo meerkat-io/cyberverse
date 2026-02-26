@@ -8,6 +8,9 @@ const OPCODES := {
 	"STORE_GLOBAL": 0x03,
 	"LOAD_LOCAL": 0x04,
 	"STORE_LOCAL": 0x05,
+	# Pseudo instructions
+	"PUSH_FLOAT": 0x01,
+	"PUSH_STR": 0x01,
 
 	# Stack / Registers
 	"PUSH_R0": 0x10,
@@ -72,7 +75,22 @@ const OPCODES := {
 	"TASK": 0x71,
 }
 
+const SYSCALLS := {
+	0x01 : "PRINT_INT",
+	0x02 : "PRINT_FIXED",
+	0x03 : "PRINT_STR",
+}
+
+var _constant_pool: PackedByteArray = PackedByteArray()
+var _constant_offset: int = 0
+var _string_offsets: Dictionary = {} # string -> offset
+var _extensions: Dictionary = {} # ext_id -> Extension
+
 func assemble(source: String) -> PackedByteArray:
+	_constant_pool.clear()
+	_constant_offset = 0
+	_string_offsets.clear()
+
 	var lines = source.split("\n")
 	var labels = _first_pass(lines)
 
@@ -87,7 +105,7 @@ func assemble(source: String) -> PackedByteArray:
 		var inst = parts[0]
 
 		var opcode = OPCODES.get(inst, -1)
-		if opcode == -1:
+		if opcode == -1 and not _extensions.has(inst):
 			push_error("Unknown instruction: %s" % inst)
 			return PackedByteArray()
 
@@ -101,6 +119,21 @@ func assemble(source: String) -> PackedByteArray:
 				bytecode.append((v >> 16) & 0xFF)
 				bytecode.append((v >> 24) & 0xFF)
 
+			"PUSH_STR":
+				var offset = _add_string(parts[1])
+				bytecode.append(offset & 0xFF)
+				bytecode.append((offset >> 8) & 0xFF)
+				bytecode.append((offset >> 16) & 0xFF)
+				bytecode.append((offset >> 24) & 0xFF)
+
+			"PUSH_FLOAT":
+				var f = float(parts[1])
+				var i = int(f * 65536.0)
+				bytecode.append(i & 0xFF)
+				bytecode.append((i >> 8) & 0xFF)
+				bytecode.append((i >> 16) & 0xFF)
+				bytecode.append((i >> 24) & 0xFF)
+
 			"LOAD_GLOBAL", "STORE_GLOBAL", "LOAD_LOCAL", "STORE_LOCAL":
 				bytecode.append(int(parts[1]))
 
@@ -109,19 +142,13 @@ func assemble(source: String) -> PackedByteArray:
 				var addr = labels[target]
 				bytecode.append(addr & 0xFF)
 				bytecode.append((addr >> 8) & 0xFF)
-				if inst == "CALL":
-					# check if parts[2] exists for arg count					
-					if parts.size() >= 3:
-						var arg_count = int(parts[2])
-						bytecode.append(arg_count)
-					else:
-						bytecode.append(0) # no args
 
 			"SYSCALL", "TASK":
-				# TODO: handle syscall/task args that can be labels
 				bytecode.append(int(parts[1]))
 
-			# TODO: handle other dynamic modules
+			_:
+				if inst in _extensions:
+					bytecode.append(int(parts[1]))
 
 	return bytecode
 
@@ -145,16 +172,27 @@ func _first_pass(lines: Array) -> Dictionary:
 		pc += 1 # opcode
 
 		# immediates
-		if inst == "PUSH":
+		if inst in ["PUSH", "PUSH_FLOAT", "PUSH_STR"]:
 			pc += 4
 		elif inst in ["LOAD_GLOBAL", "STORE_GLOBAL", "LOAD_LOCAL", "STORE_LOCAL"]:
 			pc += 1
-		elif inst in ["JMP", "JMP_IF_TRUE", "JMP_IF_FALSE"]:
+		elif inst in ["JMP", "JMP_IF_TRUE", "JMP_IF_FALSE", "CALL"]:
 			pc += 2
-		elif inst == "CALL":
-			pc += 3
 		elif inst in ["SYSCALL", "TASK"]:
-			# TODO: handle syscall/task args that can be labels
 			pc += 1
 
+	_constant_offset = pc
+
 	return labels
+
+func _add_string(s: String) -> int:
+	if _string_offsets.has(s):
+		return _string_offsets[s]
+	
+	var offset = _constant_pool.size() + _constant_offset
+	var utf8_bytes = s.to_utf8_buffer()
+	_constant_pool.append((utf8_bytes.size() >> 8) & 0xFF)
+	_constant_pool.append(utf8_bytes.size() & 0xFF)
+	_constant_pool.append_array(utf8_bytes)
+	_string_offsets[s] = offset
+	return offset

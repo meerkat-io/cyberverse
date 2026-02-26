@@ -746,8 +746,9 @@ func test_call() -> void:
 	var bytecode = _assembler.assemble(
 	"""
 		PUSH 42
-		PUSH 1
-		CALL add 2
+		PUSH 12
+		PUSH 2
+		CALL add
 		JMP end
 	add:
 		LOAD_LOCAL 0
@@ -758,7 +759,7 @@ func test_call() -> void:
 	""")
 	var task = _vm.add_task(bytecode)
 	_vm.tick()
-	assert_eq(task.pop_stack(), 43)
+	assert_eq(task.pop_stack(), 54)
 	assert_eq(task._locals[8], 42) # first local slot of call frame should have first arg
-	assert_eq(task._locals[9], 1) # second local slot of call frame should have second arg
+	assert_eq(task._locals[9], 12) # second local slot of call frame should have second arg
 	assert_eq(task._frame, 0) # call frame should be cleaned up after RET

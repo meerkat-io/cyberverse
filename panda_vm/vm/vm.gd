@@ -247,7 +247,7 @@ func tick():
 						if task._frame >= task.MAX_FRAMES:
 							push_error("Max call frame depth exceeded")
 							task.state = Task.State.FINISHED
-						var arg_count = code[pc]; pc += 1
+						var arg_count = task.pop_stack()
 						for i in range(arg_count):
 							# args are passed to local variables of the callee in reverse order
 							var arg_value = task.pop_stack()
