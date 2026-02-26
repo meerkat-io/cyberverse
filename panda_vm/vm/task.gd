@@ -8,10 +8,16 @@ enum State {
 	FINISHED
 }
 
+const MAX_FRAMES := 8
+const LOCALS_PER_FRAME := 8
+const STACK_SIZE := 8
+const REGISTER_COUNT := 4
+
 var _bytecode: PackedByteArray
 var _entry_addr: int = 0
 var _pc: int = 0
 var _sp: int = 0
+var _frame: int = 0
 
 var _regs: PackedInt32Array = PackedInt32Array()
 var _stack: PackedInt32Array = PackedInt32Array()
@@ -28,10 +34,10 @@ func _init(bytecode: PackedByteArray, entry_addr: int):
 	_bytecode = bytecode
 	_entry_addr = entry_addr
 
-	_stack.resize(8)
-	_regs.resize(4)
+	_stack.resize(STACK_SIZE)
+	_regs.resize(REGISTER_COUNT)
 	_regs.fill(0)
-	_locals.resize(32)
+	_locals.resize(LOCALS_PER_FRAME * MAX_FRAMES)
 
 	reset()
 

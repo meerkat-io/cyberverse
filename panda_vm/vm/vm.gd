@@ -73,11 +73,11 @@ func tick():
 					0x04: # LOAD_LOCAL <idx>
 						var idx = code[pc]
 						pc += 1
-						task.push_stack(locals[idx])
+						task.push_stack(locals[idx + task._frame * task.LOCALS_PER_FRAME])
 					0x05: # STORE_LOCAL <idx>
 						var idx = code[pc]
 						pc += 1
-						locals[idx] = task.pop_stack()
+						locals[idx + task._frame * task.LOCALS_PER_FRAME] = task.pop_stack()
 					
 					# Stack Operations
 					0x10: # PUSH_R0
@@ -250,9 +250,15 @@ func tick():
 						var addr = int(code[pc]) | int(code[pc + 1]) << 8; pc += 2
 						task.push_stack(pc)
 						pc = addr
+						task._frame += 1
+						if task._frame >= task.MAX_FRAMES:
+							push_error("Max call frame depth exceeded")
+							task.state = Task.State.FINISHED
 					0x64: # RET
 						pc = task.pop_stack()
+						task._frame -= 1
 
+					# System Calls
 					0x70: # SYSCALL <idx>
 						var sub_code = code[pc]
 						pc += 1
@@ -274,6 +280,7 @@ func tick():
 								push_error("Unknown syscall %s" % sub_code)
 								task.state = Task.State.FINISHED
 
+					# Task Management
 					0x71: # TASK
 						var sub_code = code[pc]
 						pc += 1
@@ -302,6 +309,8 @@ func tick():
 								var signal_id = int(code[pc])
 								pc += 1
 								_signal_queue.append(signal_id)
+
+					# TODO: other extensions should be registered dynamically
 
 					_: # unknown opcode
 						push_error("Unknown opcode %s" % opcode)
