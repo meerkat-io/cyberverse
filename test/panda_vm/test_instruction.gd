@@ -13,7 +13,7 @@ func test_push() -> void:
 		PUSH 100
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 100)
 	assert_eq(task.pop_stack(), 42)
 
@@ -25,7 +25,7 @@ func test_load_store_global() -> void:
 		LOAD_GLOBAL 0
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 123)
 
 func test_load_store_local() -> void:
@@ -36,7 +36,7 @@ func test_load_store_local() -> void:
 		LOAD_LOCAL 0
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 456)
 
 func test_push_pop_register() -> void:
@@ -47,7 +47,7 @@ func test_push_pop_register() -> void:
 		PUSH_R0
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 1)
 	assert_eq(task._regs[0], 1)
 
@@ -59,7 +59,7 @@ func test_push_pop_register() -> void:
 	""")
 	_vm.reset()
 	task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 2)
 	assert_eq(task._regs[1], 2)
 
@@ -71,7 +71,7 @@ func test_push_pop_register() -> void:
 	""")
 	_vm.reset()
 	task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 3)
 	assert_eq(task._regs[2], 3)
 
@@ -83,7 +83,7 @@ func test_push_pop_register() -> void:
 	""")
 	_vm.reset()
 	task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 4)
 	assert_eq(task._regs[3], 4)
 
@@ -94,7 +94,7 @@ func test_duplicate_top() -> void:
 		DUP
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 99)
 	assert_eq(task.pop_stack(), 99)
 
@@ -106,7 +106,7 @@ func test_swap_top() -> void:
 		SWAP
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 1)
 	assert_eq(task.pop_stack(), 2)
 
@@ -118,7 +118,7 @@ func test_drop_top() -> void:
 		DROP
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 1)
 
 func test_add_int() -> void:
@@ -129,7 +129,7 @@ func test_add_int() -> void:
 		ADD_INT
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 30)
 
 func test_sub_int() -> void:
@@ -140,7 +140,7 @@ func test_sub_int() -> void:
 		SUB_INT
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 15)
 
 func test_mul_int() -> void:
@@ -151,7 +151,7 @@ func test_mul_int() -> void:
 		MUL_INT
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 42)
 
 func test_div_int() -> void:
@@ -162,7 +162,7 @@ func test_div_int() -> void:
 		DIV_INT
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 5)
 
 func test_mod_int() -> void:
@@ -173,7 +173,7 @@ func test_mod_int() -> void:
 		MOD_INT
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 2)
 
 func test_neg_int() -> void:
@@ -183,7 +183,7 @@ func test_neg_int() -> void:
 		NEG_INT
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), -10)
 
 func test_and() -> void:
@@ -194,7 +194,7 @@ func test_and() -> void:
 		AND
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 8)
 
 func test_or() -> void:
@@ -205,7 +205,7 @@ func test_or() -> void:
 		OR
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 11)
 
 func test_xor() -> void:
@@ -216,7 +216,7 @@ func test_xor() -> void:
 		XOR
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 1)
 
 func test_not() -> void:
@@ -226,7 +226,7 @@ func test_not() -> void:
 		NOT 
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), ~9)
 
 func test_add_fixed() -> void:
@@ -239,7 +239,7 @@ func test_add_fixed() -> void:
 		ADD_FIXED
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 3 << 16)
 
 func test_sub_fixed() -> void:
@@ -252,7 +252,7 @@ func test_sub_fixed() -> void:
 		SUB_FIXED
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 2 << 16)
 
 func test_mul_fixed() -> void:
@@ -265,7 +265,7 @@ func test_mul_fixed() -> void:
 		MUL_FIXED
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 15 << 16)
 
 func test_div_fixed() -> void:
@@ -278,7 +278,7 @@ func test_div_fixed() -> void:
 		DIV_FIXED
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 2 << 16)
 
 func test_neg_fixed() -> void:
@@ -289,7 +289,7 @@ func test_neg_fixed() -> void:
 		NEG_FIXED
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), -(5 << 16))
 
 func test_int_to_fixed() -> void:
@@ -299,7 +299,7 @@ func test_int_to_fixed() -> void:
 		INT_TO_FIXED
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 5 << 16)
 
 func test_fixed_to_int() -> void:
@@ -310,7 +310,7 @@ func test_fixed_to_int() -> void:
 		FIXED_TO_INT
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 5)
 
 func test_cmp_eq_int() -> void:
@@ -321,7 +321,7 @@ func test_cmp_eq_int() -> void:
 		CMP_EQ_INT
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 1)
 
 	bytecode = _assembler.assemble(
@@ -332,7 +332,7 @@ func test_cmp_eq_int() -> void:
 	""")
 	_vm.reset()
 	task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 0)
 
 func test_cmp_ne_int() -> void:
@@ -343,7 +343,7 @@ func test_cmp_ne_int() -> void:
 		CMP_NE_INT
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 0)
 
 	bytecode = _assembler.assemble(
@@ -354,7 +354,7 @@ func test_cmp_ne_int() -> void:
 	""")
 	_vm.reset()
 	task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 1)
 
 func test_cmp_lt_int() -> void:
@@ -365,7 +365,7 @@ func test_cmp_lt_int() -> void:
 		CMP_LT_INT
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 1)
 
 	bytecode = _assembler.assemble(
@@ -376,7 +376,7 @@ func test_cmp_lt_int() -> void:
 	""")
 	_vm.reset()
 	task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 0)
 
 	bytecode = _assembler.assemble(
@@ -387,7 +387,7 @@ func test_cmp_lt_int() -> void:
 	""")
 	_vm.reset()
 	task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 0)
 
 func test_cmp_le_int() -> void:		
@@ -398,7 +398,7 @@ func test_cmp_le_int() -> void:
 		CMP_LE_INT
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 1)
 
 	bytecode = _assembler.assemble(
@@ -409,7 +409,7 @@ func test_cmp_le_int() -> void:
 	""")
 	_vm.reset()
 	task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 1)
 
 	bytecode = _assembler.assemble(
@@ -420,7 +420,7 @@ func test_cmp_le_int() -> void:
 	""")
 	_vm.reset()
 	task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 0)
 
 func test_cmp_gt_int() -> void:
@@ -431,7 +431,7 @@ func test_cmp_gt_int() -> void:
 		CMP_GT_INT
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 0)
 
 	bytecode = _assembler.assemble(
@@ -442,7 +442,7 @@ func test_cmp_gt_int() -> void:
 	""")
 	_vm.reset()
 	task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 0)
 
 	bytecode = _assembler.assemble(
@@ -453,7 +453,7 @@ func test_cmp_gt_int() -> void:
 	""")
 	_vm.reset()
 	task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 1)
 
 func test_cmp_ge_int() -> void:
@@ -464,7 +464,7 @@ func test_cmp_ge_int() -> void:
 		CMP_GE_INT
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 0)
 
 	bytecode = _assembler.assemble(
@@ -475,7 +475,7 @@ func test_cmp_ge_int() -> void:
 	""")
 	_vm.reset()
 	task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 1)
 
 	bytecode = _assembler.assemble(
@@ -486,7 +486,7 @@ func test_cmp_ge_int() -> void:
 	""")
 	_vm.reset()
 	task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 1)
 
 func test_cmp_eq_fixed() -> void:
@@ -499,7 +499,7 @@ func test_cmp_eq_fixed() -> void:
 		CMP_EQ_FIXED
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 1)
 
 	bytecode = _assembler.assemble(
@@ -512,7 +512,7 @@ func test_cmp_eq_fixed() -> void:
 	""")
 	_vm.reset()
 	task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 0)
 
 func test_cmp_ne_fixed() -> void:
@@ -525,7 +525,7 @@ func test_cmp_ne_fixed() -> void:
 		CMP_NE_FIXED
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 0)
 
 	bytecode = _assembler.assemble(
@@ -538,7 +538,7 @@ func test_cmp_ne_fixed() -> void:
 	""")
 	_vm.reset()
 	task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 1)
 
 func test_cmp_lt_fixed() -> void:
@@ -551,7 +551,7 @@ func test_cmp_lt_fixed() -> void:
 		CMP_LT_FIXED
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 1)
 
 	bytecode = _assembler.assemble(
@@ -564,7 +564,7 @@ func test_cmp_lt_fixed() -> void:
 	""")
 	_vm.reset()
 	task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 0)
 
 	bytecode = _assembler.assemble(
@@ -577,7 +577,7 @@ func test_cmp_lt_fixed() -> void:
 	""")
 	_vm.reset()
 	task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 0)
 
 func test_cmp_le_fixed() -> void:
@@ -590,7 +590,7 @@ func test_cmp_le_fixed() -> void:
 		CMP_LE_FIXED
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 1)
 
 	bytecode = _assembler.assemble(
@@ -603,7 +603,7 @@ func test_cmp_le_fixed() -> void:
 	""")
 	_vm.reset()
 	task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 1)
 
 	bytecode = _assembler.assemble(
@@ -616,7 +616,7 @@ func test_cmp_le_fixed() -> void:
 	""")
 	_vm.reset()
 	task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 0)
 
 func test_cmp_gt_fixed() -> void:
@@ -629,7 +629,7 @@ func test_cmp_gt_fixed() -> void:
 		CMP_GT_FIXED
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 0)
 
 	bytecode = _assembler.assemble(
@@ -642,7 +642,7 @@ func test_cmp_gt_fixed() -> void:
 	""")
 	_vm.reset()
 	task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 0)	
 
 	bytecode = _assembler.assemble(
@@ -655,7 +655,7 @@ func test_cmp_gt_fixed() -> void:
 	""")
 	_vm.reset()
 	task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 1)
 
 func test_cmp_ge_fixed() -> void:
@@ -668,7 +668,7 @@ func test_cmp_ge_fixed() -> void:
 		CMP_GE_FIXED
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 0)
 
 	bytecode = _assembler.assemble(
@@ -681,7 +681,7 @@ func test_cmp_ge_fixed() -> void:
 	""")
 	_vm.reset()
 	task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 1)
 
 	bytecode = _assembler.assemble(
@@ -694,7 +694,7 @@ func test_cmp_ge_fixed() -> void:
 	""")
 	_vm.reset()
 	task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 1)
 
 func test_jmp() -> void:
@@ -706,7 +706,7 @@ func test_jmp() -> void:
 		PUSH 2
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 2)
 	assert_eq(task._sp, 0) # stack empty after execution
 
@@ -722,7 +722,7 @@ func test_jmp_if_true() -> void:
 	end:
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 42)
 	assert_eq(task._sp, 0) # stack empty after execution
 
@@ -738,7 +738,7 @@ func test_jmp_if_false() -> void:
 	end:
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 42)
 	assert_eq(task._sp, 0) # stack empty after execution
 
@@ -758,7 +758,7 @@ func test_call_return() -> void:
 	end:
 	""")
 	var task = _vm.add_task(bytecode)
-	_vm.tick()
+	_vm.execute()
 	assert_eq(task.pop_stack(), 54)
 	assert_eq(task._locals[8], 42) # first local slot of call frame should have first arg
 	assert_eq(task._locals[9], 12) # second local slot of call frame should have second arg

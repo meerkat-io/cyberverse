@@ -25,7 +25,7 @@ func add_task(bytecode: PackedByteArray, entry_addr: int = 0) -> Task:
 	_tasks.append(task)
 	return task
 
-func tick():
+func execute():
 	for task in _tasks:
 		if task.state == Task.State.FINISHED:
 			_tasks.remove_at(_tasks.find(task))
