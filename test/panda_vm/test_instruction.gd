@@ -742,7 +742,7 @@ func test_jmp_if_false() -> void:
 	assert_eq(task.pop_stack(), 42)
 	assert_eq(task._sp, 0) # stack empty after execution
 
-func test_call() -> void:
+func test_call_return() -> void:
 	var bytecode = _assembler.assemble(
 	"""
 		PUSH 42

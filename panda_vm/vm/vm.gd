@@ -295,7 +295,6 @@ func tick():
 								var ticks = int(code[pc]) | int(code[pc + 1]) << 8; pc += 2
 								task._pc = pc
 								task.sleep_ticks = ticks
-								
 								task.state = Task.State.SLEEPING
 							0x04: # WAIT_SIGNAL <signal_id>
 								var signal_id = int(code[pc]); pc += 1
