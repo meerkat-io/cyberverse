@@ -69,22 +69,42 @@ const OPCODES := {
 	"JMP_IF_FALSE": 0x62,
 	"CALL": 0x63,
 	"RET": 0x64,
-
-	# Modules
-	"SYSCALL": 0x70,
-	"TASK": 0x71,
 }
 
-const SYSCALLS := {
-	0x01 : "PRINT_INT",
-	0x02 : "PRINT_FIXED",
-	0x03 : "PRINT_STR",
+const SYSCALL_OPCODES := {
+	"PRINT_INT": 0x01,
+	"PRINT_FIXED": 0x02,
+	"PRINT_STR": 0x03,
+}
+
+const EVENT_OPCODES := {
+	"CREATE_HANDLER": 0x01,
+	"EXIT_HANDLER": 0x02,
+	"HANDLER_SLEEP": 0x03,
+	"SEND": 0x04,
 }
 
 var _constant_pool: PackedByteArray = PackedByteArray()
 var _constant_offset: int = 0
 var _string_offsets: Dictionary = {} # string -> offset
-var _extensions: Dictionary = {} # ext_id -> Extension
+
+var _extensions := {
+	"SYSCALL": 0x70,
+	"EVENT": 0x71,
+}
+
+var _extension_subcodes := {
+	"SYSCALL": SYSCALL_OPCODES,
+	"EVENT": EVENT_OPCODES,
+}
+
+func register_extension(name: String, opcode: int, subcodes: Dictionary) -> void:
+	if _extensions.has(name):
+		push_error("Extension %s already exists" % name)
+		return
+	
+	_extensions[name] = opcode
+	_extension_subcodes[name] = subcodes
 
 func assemble(source: String) -> PackedByteArray:
 	_constant_pool.clear()
@@ -143,12 +163,14 @@ func assemble(source: String) -> PackedByteArray:
 				bytecode.append(addr & 0xFF)
 				bytecode.append((addr >> 8) & 0xFF)
 
-			"SYSCALL", "TASK":
-				bytecode.append(int(parts[1]))
-
 			_:
 				if inst in _extensions:
-					bytecode.append(int(parts[1]))
+					var subcodes = _extension_subcodes[inst]
+					if not subcodes.has(parts[1]):
+						push_error("Unknown sub-instruction: %s %s" % [inst, parts[1]])
+						return PackedByteArray()
+					var sub_code = subcodes[parts[1]]
+					bytecode.append(sub_code)
 
 	return bytecode
 

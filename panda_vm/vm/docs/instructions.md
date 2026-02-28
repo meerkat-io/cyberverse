@@ -17,14 +17,14 @@ This instruction set is designed for a stack-based VM with tasks and syscalls. O
 
 | Assembly | Description | Example | Opcode |
 | :--- | :--- | :--- | :--- |
-| PUSH R0 | Push register R0 onto stack | PUSH R0 | 0x10 |
-| POP R0 | Pop stack to register R0 | POP R0 | 0x11 |
-| PUSH R1 | Push register R1 onto stack | PUSH R1 | 0x12 |
-| POP R1 | Pop stack to register R1 | POP R1 | 0x13 |
-| PUSH R2 | Push register R2 onto stack | PUSH R2 | 0x14 |
-| POP R2 | Pop stack to register R2 | POP R2 | 0x15 |
-| PUSH R3 | Push register R3 onto stack | PUSH R3 | 0x16 |
-| POP R3 | Pop stack to register R3 | POP R3 | 0x17 |
+| PUSH_R0 | Push register R0 onto stack | PUSH_R0 | 0x10 |
+| POP_R0 | Pop stack to register R0 | POP_R0 | 0x11 |
+| PUSH_R1 | Push register R1 onto stack | PUSH_R1 | 0x12 |
+| POP_R1 | Pop stack to register R1 | POP_R1 | 0x13 |
+| PUSH_R2 | Push register R2 onto stack | PUSH_R2 | 0x14 |
+| POP_R2 | Pop stack to register R2 | POP_R2 | 0x15 |
+| PUSH_R3 | Push register R3 onto stack | PUSH_R3 | 0x16 |
+| POP_R3 | Pop stack to register R3 | POP_R3 | 0x17 |
 | DUP | Duplicate top of stack | DUP | 0x18 |
 | SWAP | Swap top two stack elements | SWAP | 0x19 |
 | DROP | Drop top stack element | DROP | 0x1A |
@@ -39,9 +39,9 @@ This instruction set is designed for a stack-based VM with tasks and syscalls. O
 | DIV_INT | Divide top two integers | DIV_INT | 0x23 |
 | MOD_INT | Modulo of top two integers | MOD_INT | 0x24 |
 | NEG_INT | Negate top integer | NEG_INT | 0x25 |
-| SHL_INT | Shift top integer by n bits | SHL | 0x26 |
-| SHR_INT | Logical shift right (zero-fill) | SHR | 0x27 |
-| SAR_INT | Arithmetic shift right (sign-fill) | SAR | 0x28 |
+| SHL_INT | Shift top integer by n bits | SHL_INT | 0x26 |
+| SHR_INT | Logical shift right (zero-fill) | SHR_INT | 0x27 |
+| SAR_INT | Arithmetic shift right (sign-fill) | SAR_INT | 0x28 |
 | AND | Bitwise AND of top two integers | AND | 0x29 |
 | OR | Bitwise OR of top two integers| OR | 0x2A |
 | XOR | Bitwise XOR of top two integers| XOR | 0x2B |
@@ -79,32 +79,32 @@ This instruction set is designed for a stack-based VM with tasks and syscalls. O
 | CMP_GE_FIXED | Compare greater or equal (fixed) | CMP_GE_FIXED | 0x5B |
 
 ### Branch
-| **Branch / Call / Return** |  |  |  |
+| Assembly | Description | Example | Opcode |
+| :--- | :--- | :--- | :--- |
 | JMP <addr> | Unconditional jump | JMP 0x10 | 0x60 |
 | JMP_IF_TRUE <addr> | Jump if top stack != 0 | JMP_IF_TRUE 0x20 | 0x61 |
 | JMP_IF_FALSE <addr> | Jump if top stack == 0 | JMP_IF_FALSE 0x30 | 0x62 |
 | CALL <addr> | Call function | CALL 0x50 | 0x63 |
 | RET | Return from call | RET | 0x64 |
 
-### Modules
-
+### Extensions
 | Assembly | Description | Example | Opcode |
 | :--- | :--- | :--- | :--- |
-| SYSCALL <id> | Invoke system function | SYSCALL 0x01 | 0x70 |
-| TASK | Task manager | TASK | 0x71 |
+| SYSCALL | Invoke system function | SYSCALL PRINT_INT | 0x70 |
+| EVENT | Event & handler system | EVENT CREATE_HANDLER | 0x71 |
 
 ### System Calls
 | Assembly | Description | Example | Subcode |
 | :--- | :--- | :--- | :--- |
-| PRINT_INT | Print integer | PRINT_INT | 0x01 |
-| PRINT_FIXED | Print fixed-point | PRINT_FIXED | 0x02 |
-| PRINT_STR | Print string from constant pool (8bit length+content) | PRINT_STR str_hello | 0x03 |
+| PRINT_INT | Print integer | SYSCALL PRINT_INT | 0x01 |
+| PRINT_FIXED | Print fixed-point | SYSCALL PRINT_FIXED | 0x02 |
+| PRINT_STR | Print string from constant pool | SYSCALL PRINT_STR | 0x03 |
 
 
-### Handler
+### Event
 | Assembly | Description | Example | Subcode |
 | :--- | :--- | :--- | :--- |
-| CREATE | Create a new task | HANDLER_CREATE addr | 0x01 |
-| EXIT | Exit current task | HANDLER_EXIT | 0x02 |
-| SLEEP | Sleep task for ticks | HANDLER_SLEEP 50 | 0x03 |
-| SEND_EVENT | Send an event | SEND_EVENT 3 | 0x04 |
+| CREATE_HANDLER | Create a new task | EVENT CREATE_HANDLER | 0x01 |
+| EXIT_HANDLER | Exit current task | EVENT EXIT_HANDLER | 0x02 |
+| HANDLER_SLEEP | Sleep task for ticks | EVENT HANDLER_SLEEP | 0x03 |
+| SEND | Send an event | EVENT SEND 3 | 0x04 |
