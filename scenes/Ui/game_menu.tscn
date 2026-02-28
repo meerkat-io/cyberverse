@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://18psybjg8yty"]
+[gd_scene format=3 uid="uid://18psybjg8yty"]
 
 [ext_resource type="Script" uid="uid://dr5qs2bdvqyvl" path="res://scripts/ui/game_menu.gd" id="1_g8oa6"]
 [ext_resource type="Texture2D" uid="uid://dss8dvq6encnc" path="res://assets/sprites/ui/background.jpg" id="2_3rbob"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b438og60dg6vm" path="res://assets/sprites/ui/button_top.png" id="4_bpafv"]
 [ext_resource type="Texture2D" uid="uid://cp0li30ao1rcq" path="res://assets/sprites/ui/button_bottom.png" id="4_g8oa6"]
 [ext_resource type="Texture2D" uid="uid://dmin2rp65cvd3" path="res://assets/sprites/ui/title.png" id="5_g8oa6"]
-[ext_resource type="Script" path="res://scenes/ui/cheat.gd" id="7_yyry6"]
+[ext_resource type="Script" uid="uid://3jho1vwm3t3w" path="res://scenes/ui/cheat.gd" id="7_yyry6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g8oa6"]
 content_margin_left = 0.0
@@ -149,7 +149,7 @@ texture_margin_right = 50.0
 texture_margin_bottom = 40.0
 modulate_color = Color(0.92156863, 0.047058824, 0.2509804, 1)
 
-[node name="GameMenu" type="Control"]
+[node name="GameMenu" type="Control" unique_id=1883048503]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -158,7 +158,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_g8oa6")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=1957613906]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -169,7 +169,7 @@ texture = ExtResource("2_3rbob")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Title" type="TextureRect" parent="."]
+[node name="Title" type="TextureRect" parent="." unique_id=1439338884]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -183,7 +183,7 @@ offset_bottom = 249.0
 grow_horizontal = 2
 texture = ExtResource("5_g8oa6")
 
-[node name="options" type="Panel" parent="."]
+[node name="options" type="Panel" parent="." unique_id=1149935967]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -198,14 +198,14 @@ offset_bottom = 403.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="choose" type="Label" parent="options"]
+[node name="choose" type="Label" parent="options" unique_id=1470757517]
 layout_mode = 0
 offset_left = 150.0
 offset_top = 154.0
 offset_right = 612.0
 offset_bottom = 368.0
 
-[node name="Menu2" type="PanelContainer" parent="options"]
+[node name="Menu2" type="PanelContainer" parent="options" unique_id=1819332187]
 custom_minimum_size = Vector2(500, 450)
 layout_mode = 1
 anchors_preset = 8
@@ -221,7 +221,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_g8oa6")
 
-[node name="Back" type="Button" parent="options"]
+[node name="Back" type="Button" parent="options" unique_id=1441214717]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 1
 anchors_preset = 8
@@ -246,7 +246,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_1djrs")
 text = "Back
 "
 
-[node name="Label" type="Label" parent="options"]
+[node name="Label" type="Label" parent="options" unique_id=2061663906]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -264,7 +264,7 @@ text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="options"]
+[node name="HSlider" type="HSlider" parent="options" unique_id=1980411223]
 layout_mode = 0
 offset_left = 209.0
 offset_top = 109.0
@@ -276,7 +276,7 @@ theme_override_styles/grabber_area = SubResource("StyleBoxLine_yyry6")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_yyry6")
 value = 50.0
 
-[node name="sound" type="Label" parent="options"]
+[node name="sound" type="Label" parent="options" unique_id=243901692]
 layout_mode = 0
 offset_left = 67.0
 offset_top = 109.0
@@ -285,7 +285,7 @@ offset_bottom = 154.0
 theme_override_font_sizes/font_size = 24
 text = "sound : "
 
-[node name="Cheat" type="Control" parent="options"]
+[node name="Cheat" type="Control" parent="options" unique_id=2128139705]
 visible = false
 anchors_preset = 0
 offset_left = 55.0
@@ -294,7 +294,7 @@ offset_right = 496.0
 offset_bottom = 299.0
 script = ExtResource("7_yyry6")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="options/Cheat"]
+[node name="VBoxContainer" type="VBoxContainer" parent="options/Cheat" unique_id=491748550]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -308,20 +308,20 @@ offset_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ask" type="Label" parent="options/Cheat/VBoxContainer"]
+[node name="ask" type="Label" parent="options/Cheat/VBoxContainer" unique_id=959537845]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_yyry6")
 text = "cheatcodes for testing :"
 horizontal_alignment = 1
 
-[node name="input code" type="LineEdit" parent="options/Cheat/VBoxContainer"]
+[node name="input code" type="LineEdit" parent="options/Cheat/VBoxContainer" unique_id=17261858]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 placeholder_text = "\" input code\""
 alignment = 1
 
-[node name="try" type="Button" parent="options/Cheat/VBoxContainer"]
+[node name="try" type="Button" parent="options/Cheat/VBoxContainer" unique_id=1527985728]
 layout_mode = 2
 theme_override_colors/font_pressed_color = Color(0.0018410678, 0.0018410682, 0.0018410678, 1)
 theme_override_font_sizes/font_size = 24
@@ -335,10 +335,10 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_ah5xx")
 text = "confirm and enter            
 "
 
-[node name="confirm" type="Label" parent="options/Cheat/VBoxContainer"]
+[node name="confirm" type="Label" parent="options/Cheat/VBoxContainer" unique_id=1322037285]
 layout_mode = 2
 
-[node name="Menu" type="PanelContainer" parent="."]
+[node name="Menu" type="PanelContainer" parent="." unique_id=1163489360]
 custom_minimum_size = Vector2(500, 450)
 layout_mode = 1
 anchors_preset = 8
@@ -354,14 +354,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_g8oa6")
 
-[node name="Buttons" type="VBoxContainer" parent="Menu"]
+[node name="Buttons" type="VBoxContainer" parent="Menu" unique_id=154955237]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = -5
 alignment = 1
 
-[node name="Start" type="Button" parent="Menu/Buttons"]
+[node name="Start" type="Button" parent="Menu/Buttons" unique_id=117162714]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -375,7 +375,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_to44m")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_l6cm7")
 text = "Start"
 
-[node name="Settings" type="Button" parent="Menu/Buttons"]
+[node name="Settings" type="Button" parent="Menu/Buttons" unique_id=469379727]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -390,7 +390,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_nrj1f")
 text = "Settings
 "
 
-[node name="Exit" type="Button" parent="Menu/Buttons"]
+[node name="Exit" type="Button" parent="Menu/Buttons" unique_id=340969192]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -407,6 +407,6 @@ text = "Exit
 [connection signal="button_down" from="options/Back" to="." method="_on_back_button_down"]
 [connection signal="pressed" from="options/Cheat/VBoxContainer/try" to="options/Cheat" method="_on_try_pressed"]
 [connection signal="pressed" from="Menu/Buttons/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Menu/Buttons/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Menu/Buttons/Settings" to="." method="_on_option_3_pressed"]
+[connection signal="pressed" from="Menu/Buttons/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Menu/Buttons/Exit" to="." method="_on_exit_2_pressed"]

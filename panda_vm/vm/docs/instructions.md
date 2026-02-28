@@ -98,14 +98,13 @@ This instruction set is designed for a stack-based VM with tasks and syscalls. O
 | :--- | :--- | :--- | :--- |
 | PRINT_INT | Print integer | PRINT_INT | 0x01 |
 | PRINT_FIXED | Print fixed-point | PRINT_FIXED | 0x02 |
-| PRINT_STR <addr> | Print string from constant pool (8bit length+content) | PRINT_STR str_hello | 0x03 |
+| PRINT_STR | Print string from constant pool (8bit length+content) | PRINT_STR str_hello | 0x03 |
 
 
-### Task
+### Handler
 | Assembly | Description | Example | Subcode |
 | :--- | :--- | :--- | :--- |
-| TASK_CREATE <addr> | Create a new task | TASK_CREATE addr | 0x01 |
-| TASK_EXIT | Exit current task | TASK_EXIT | 0x02 |
-| TASK_SLEEP <tick> | Sleep task for ticks | TASK_SLEEP 50 | 0x03 |
-| TASK_WAIT <signal_id> | Wait signal | TASK_WAIT 3 | 0x04 |
-| TASK_SIGNAL <signal_id> | Signal task | TASK_SIGNAL 3 | 0x05 |
+| CREATE | Create a new task | HANDLER_CREATE addr | 0x01 |
+| EXIT | Exit current task | HANDLER_EXIT | 0x02 |
+| SLEEP | Sleep task for ticks | HANDLER_SLEEP 50 | 0x03 |
+| SEND_EVENT | Send an event | SEND_EVENT 3 | 0x04 |
