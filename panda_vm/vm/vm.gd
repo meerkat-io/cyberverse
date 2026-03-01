@@ -10,6 +10,7 @@ var _event_pool: Array[Event] = []
 var _event_registers: PackedInt32Array = PackedInt32Array()
 var _handlers: Dictionary = {} # event_id -> Handler
 var _globals: PackedInt32Array = PackedInt32Array()
+var _console: Console = Console.new()
 
 func _init():
 	_event_registers.resize(Task.REGISTER_COUNT)
@@ -326,16 +327,16 @@ func _execute(task: Task) -> bool:
 				match sub_code:
 					0x01: # PRINT_INT
 						var value = task.pop_stack()
-						print(value)
+						_console.output(value)
 					0x02: # PRINT_FIXED
 						var value = task.pop_stack()
-						print(float(value) / 65536.0)
+						_console.output(float(value) / 65536.0)
 					0x03: # PRINT_STR
-						var addr = int(code[pc]) | int(code[pc + 1]) << 8; pc += 2
+						var addr = task.pop_stack()
 						var str_len = int(code[addr]) | int(code[addr + 1]) << 8
-						var str_bytes = code.subarray(addr + 2, addr + 2 + str_len)
-						var string = String(str_bytes)
-						print(string)
+						var str_bytes = code.slice(addr + 2, addr + 2 + str_len)
+						var string = str_bytes.get_string_from_utf8()
+						_console.output(string)
 					_: # unknown syscall
 						push_error("Unknown syscall %s" % sub_code)
 						task._state = Task.State.FINISHED

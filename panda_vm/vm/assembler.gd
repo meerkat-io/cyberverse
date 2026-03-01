@@ -125,9 +125,11 @@ func assemble(source: String) -> PackedByteArray:
 		var inst = parts[0]
 
 		var opcode = OPCODES.get(inst, -1)
-		if opcode == -1 and not _extensions.has(inst):
-			push_error("Unknown instruction: %s" % inst)
-			return PackedByteArray()
+		if opcode == -1:
+			if not _extensions.has(inst):
+				push_error("Unknown instruction: %s" % inst)
+				return PackedByteArray()
+			opcode = _extensions[inst]
 
 		bytecode.append(opcode)
 
@@ -140,7 +142,13 @@ func assemble(source: String) -> PackedByteArray:
 				bytecode.append((v >> 24) & 0xFF)
 
 			"PUSH_STR":
-				var offset = _add_string(parts[1])
+				var first_quote = line.find('"')
+				var last_quote = line.rfind('"')
+				if first_quote == -1 or last_quote <= first_quote:
+					push_error("Invalid string literal: %s" % line)
+					return PackedByteArray()
+				var string_val = line.substr(first_quote + 1, last_quote - first_quote - 1)
+				var offset = _add_string(string_val)
 				bytecode.append(offset & 0xFF)
 				bytecode.append((offset >> 8) & 0xFF)
 				bytecode.append((offset >> 16) & 0xFF)
@@ -170,8 +178,9 @@ func assemble(source: String) -> PackedByteArray:
 						push_error("Unknown sub-instruction: %s %s" % [inst, parts[1]])
 						return PackedByteArray()
 					var sub_code = subcodes[parts[1]]
-					bytecode.append(sub_code)
+					bytecode.append(sub_code & 0xFF)
 
+	bytecode.append_array(_constant_pool)
 	return bytecode
 
 func _first_pass(lines: Array) -> Dictionary:
@@ -213,8 +222,9 @@ func _add_string(s: String) -> int:
 	
 	var offset = _constant_pool.size() + _constant_offset
 	var utf8_bytes = s.to_utf8_buffer()
-	_constant_pool.append((utf8_bytes.size() >> 8) & 0xFF)
-	_constant_pool.append(utf8_bytes.size() & 0xFF)
+	var str_len = utf8_bytes.size()
+	_constant_pool.append(str_len & 0xFF)
+	_constant_pool.append((str_len >> 8) & 0xFF)
 	_constant_pool.append_array(utf8_bytes)
 	_string_offsets[s] = offset
 	return offset
