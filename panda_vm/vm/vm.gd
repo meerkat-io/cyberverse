@@ -341,8 +341,8 @@ func _execute(task: Task) -> bool:
 						push_error("Unknown syscall %s" % sub_code)
 						task._state = Task.State.FINISHED
 
-			# Task Management
-			0x71: # HANDLER
+			# Event System
+			0x71: # EVENT
 				var sub_code = code[pc]; pc += 1
 				match sub_code:
 					0x01: # CREATE

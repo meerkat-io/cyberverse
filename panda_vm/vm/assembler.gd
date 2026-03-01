@@ -209,7 +209,7 @@ func _first_pass(lines: Array) -> Dictionary:
 			pc += 1
 		elif inst in ["JMP", "JMP_IF_TRUE", "JMP_IF_FALSE", "CALL"]:
 			pc += 2
-		elif inst in ["SYSCALL", "TASK"]:
+		elif inst in _extensions:
 			pc += 1
 
 	_constant_offset = pc

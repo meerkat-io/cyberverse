@@ -39,5 +39,8 @@ func test_print_str() -> void:
 	"""
 		PUSH_STR "Hello, Panda VM!"
 		SYSCALL PRINT_STR
+		; Program should exit before EOF due to constant pool (we put the string there)
+		; We can rely on comparing PC with bytecode size, but exit explicitly
+		EVENT EXIT_HANDLER
 	""")
 	assert_eq(_vm._console._last_output, "Hello, Panda VM!")
