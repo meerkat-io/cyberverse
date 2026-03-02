@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://74m1mwt8ys4k"]
+[gd_scene format=3 uid="uid://74m1mwt8ys4k"]
 
 [ext_resource type="PackedScene" uid="uid://b80j8ho2cx8ad" path="res://code_blocks/scenes/ui/statement_block.tscn" id="1_igsmc"]
 
-[node name="SetPower" type="Node2D"]
+[node name="SetPower" type="MarginContainer" unique_id=410852968]
+offset_right = 200.0
+offset_bottom = 75.0
 
-[node name="StatementBlock" parent="." instance=ExtResource("1_igsmc")]
+[node name="StatementBlock" parent="." unique_id=1003787696 instance=ExtResource("1_igsmc")]
+layout_mode = 2
 display_template = "Set the power level for {motor:list} to {power:int(min:0, max:100)}%"
 data_source = Dictionary[String, String]({
 "motor": "motor_list"
 })
-tint = Color(0.9137255, 0.3647059, 0.20784314, 1)

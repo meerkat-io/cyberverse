@@ -1,5 +1,4 @@
 class_name BlockElement
-extends RefCounted
 
 enum ParamType { BOOL, INT, FLOAT, STRING, LIST }
 

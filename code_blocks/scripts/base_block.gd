@@ -1,13 +1,15 @@
 class_name BaseBlock
-extends Node
+extends Control
+
+@export var scene_path: String
 
 @export var display_template: String
 
-@export var code_template: String
+@export var asm_code: String
 
 @export var data_source: Dictionary[String, String]
 
-@export var tint: Color = Color("#FFFFFF")
+@export var category: Blocks.Category
 
 @onready var _content: BlockContent = $VBoxContainer/MarginContainer/MarginContainer/Content
 
@@ -29,10 +31,19 @@ func _init() -> void:
 	_regex = RegEx.new()
 	_regex.compile(BLOCK_ELEMENT_PATTERN)
 
+func _get_drag_data(at_position: Vector2) -> Variant:
+	var preview = duplicate()
+	preview.modulate.a = 0.6
+	set_drag_preview(preview)
+	
+	return {
+		"scene_path": scene_path
+	}
+
 func _ready() -> void:
 	var elements = _parse_display_template(display_template)
 	_content.build_block(elements)
-	_background.modulate = tint
+	_background.modulate = Blocks.get_tint(category)
 
 func _parse_display_template(p_template: String) -> Array[BlockElement]:
 	var elements: Array[BlockElement] = []

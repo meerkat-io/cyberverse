@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://br4ecxlwwavx4"]
+[gd_scene format=3 uid="uid://br4ecxlwwavx4"]
 
 [ext_resource type="PackedScene" uid="uid://b80j8ho2cx8ad" path="res://code_blocks/scenes/ui/statement_block.tscn" id="1_3xt12"]
 
-[node name="StopMotor" type="Node2D"]
+[node name="StopMotor" type="MarginContainer" unique_id=1233118595]
+offset_right = 200.0
+offset_bottom = 75.0
 
-[node name="StatementBlock" parent="." instance=ExtResource("1_3xt12")]
+[node name="StatementBlock" parent="." unique_id=1708261477 instance=ExtResource("1_3xt12")]
+layout_mode = 2
 display_template = "Stop  {motor:list}"
 data_source = Dictionary[String, String]({
 "motor": "motor_list"
 })
-tint = Color(0.9137255, 0.3647059, 0.20784314, 1)

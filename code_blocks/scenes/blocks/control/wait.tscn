@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpbpdvr6smrh"]
+[gd_scene format=3 uid="uid://dpbpdvr6smrh"]
 
 [ext_resource type="PackedScene" uid="uid://b80j8ho2cx8ad" path="res://code_blocks/scenes/ui/statement_block.tscn" id="1_4vfj3"]
 
-[node name="Wait" type="Node2D"]
+[node name="Wait" type="MarginContainer" unique_id=332669901]
+offset_right = 200.0
+offset_bottom = 75.0
 
-[node name="StatementBlock" parent="." instance=ExtResource("1_4vfj3")]
+[node name="StatementBlock" parent="." unique_id=1746865113 instance=ExtResource("1_4vfj3")]
+layout_mode = 2
 display_template = "Wait  {secnods:int(min:0, max:999)} seconds"
 data_source = Dictionary[String, String]({
 "motor": "motor_list"
 })
-tint = Color(1, 0.7176471, 0, 1)
