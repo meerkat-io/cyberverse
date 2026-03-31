@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://celnrbbcky4r4"]
+
+[ext_resource type="PackedScene" uid="uid://bcujl2yb3y5s2" path="res://code_blocks/scenes/ui/entry_block.tscn" id="1_y3rp1"]
+
+[node name="OnSignal" type="MarginContainer" unique_id=1878263891]
+offset_right = 200.0
+offset_bottom = 75.0
+
+[node name="EntryBlock" parent="." unique_id=2121774069 instance=ExtResource("1_y3rp1")]
+layout_mode = 2
+display_template = "On signal"
+category = 1

@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://c7agu8kbmi7fq"]
+
+[ext_resource type="Script" uid="uid://c65io6ndnx8g8" path="res://scripts/ui/programming.gd" id="1_8t1j7"]
+[ext_resource type="Texture2D" uid="uid://cvlu6lggtp51y" path="res://assets/sprites/ui/start_button_normal.png" id="8_al63l"]
+[ext_resource type="Texture2D" uid="uid://b7q42vhndlxox" path="res://assets/sprites/ui/start_button_activate.png" id="9_bynt6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l3k8s"]
+texture = ExtResource("8_al63l")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w51cw"]
+texture = ExtResource("9_bynt6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o22id"]
+texture = ExtResource("9_bynt6")
+
+[node name="Programming" type="Control" unique_id=22666622]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_8t1j7")
+enabled_categories = Array[int]([1])
+enabled_types = Array[int]([0, 1])
+
+[node name="Background" type="ColorRect" parent="." unique_id=282769472]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.14117648, 0.14117648, 0.14901961, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=183844211]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1802003881]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=1180954430]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 10.0
+
+[node name="BlocksContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=382472245]
+clip_contents = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_stretch_ratio = 4.0
+theme_override_constants/separation = 8
+
+[node name="CategoriesContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=362750459]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 8
+
+[node name="StartButton" type="Button" parent="." unique_id=262849337]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 0
+offset_left = 94.0
+offset_top = 48.0
+offset_right = 244.0
+offset_bottom = 198.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_l3k8s")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_w51cw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_o22id")

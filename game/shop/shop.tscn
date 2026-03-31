@@ -1,0 +1,228 @@
+[gd_scene load_steps=22 format=3 uid="uid://cenwoyxnmd7gs"]
+
+[ext_resource type="Script" uid="uid://bqd0jqsed31k7" path="res://game/shop/shop.gd" id="1_aur6q"]
+[ext_resource type="Texture2D" uid="uid://ct6c8uhmfcfxo" path="res://assets/sprites/ui/panel_bg.png" id="1_xxtpb"]
+[ext_resource type="Texture2D" uid="uid://dss8dvq6encnc" path="res://assets/sprites/ui/background.jpg" id="2_bhwao"]
+[ext_resource type="FontFile" uid="uid://c5gom86e4fait" path="res://assets/fonts/NotoSans_Condensed-SemiBold.ttf" id="3_bhwao"]
+[ext_resource type="Texture2D" uid="uid://cp0li30ao1rcq" path="res://assets/sprites/ui/button_bottom.png" id="4_oudrr"]
+[ext_resource type="Texture2D" uid="uid://ehg3dp84des7" path="res://assets/sprites/shopicons/commonclosed.png" id="6_oudrr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1td5y"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("1_xxtpb")
+texture_margin_left = 106.0
+texture_margin_top = 162.0
+texture_margin_right = 106.0
+texture_margin_bottom = 162.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f2sjb"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 15.0
+texture = ExtResource("4_oudrr")
+texture_margin_left = 90.0
+texture_margin_top = 40.0
+texture_margin_right = 70.0
+texture_margin_bottom = 50.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jghcc"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 15.0
+texture = ExtResource("4_oudrr")
+texture_margin_left = 90.0
+texture_margin_top = 40.0
+texture_margin_right = 70.0
+texture_margin_bottom = 50.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g411n"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 15.0
+texture = ExtResource("4_oudrr")
+texture_margin_left = 90.0
+texture_margin_top = 40.0
+texture_margin_right = 70.0
+texture_margin_bottom = 50.0
+modulate_color = Color(0.92156863, 0.047058824, 0.2509804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f2sjb"]
+bg_color = Color(0, 0, 1, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oudrr"]
+bg_color = Color(0, 0.007843138, 1, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jghcc"]
+bg_color = Color(0, 0.007843138, 1, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g411n"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7508w"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bd6ak"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oudrr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f2sjb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jghcc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g411n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7508w"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aur6q")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bhwao")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+modulate = Color(1, 1, 1, 0.5058824)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="shopmenu" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 547.0
+offset_top = 48.0
+offset_right = -642.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_1td5y")
+
+[node name="Exit" type="Button" parent="."]
+light_mask = 2
+visibility_layer = 2
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 0
+offset_left = 765.0
+offset_top = 877.0
+offset_right = 1065.0
+offset_bottom = 977.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bhwao")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_f2sjb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jghcc")
+theme_override_styles/hover = SubResource("StyleBoxTexture_g411n")
+text = "Back
+"
+
+[node name="truhen" type="Node" parent="."]
+
+[node name="bk" type="Button" parent="truhen"]
+offset_left = 647.0
+offset_top = 143.0
+offset_right = 1158.0
+offset_bottom = 301.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_f2sjb")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_oudrr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jghcc")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_oudrr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oudrr")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_oudrr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_oudrr")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_oudrr")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_oudrr")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_oudrr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_oudrr")
+expand_icon = true
+
+[node name="Buy" type="Button" parent="truhen"]
+offset_left = 887.0
+offset_top = 261.0
+offset_right = 1030.0
+offset_bottom = 288.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_g411n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7508w")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bd6ak")
+text = "BUY FOR 30 💎 "
+
+[node name="Label" type="Label" parent="truhen"]
+offset_left = 872.0
+offset_top = 143.0
+offset_right = 1174.0
+offset_bottom = 301.0
+text = "	common chest
+	content: common and 		rare items
+	probability each draw :  		70%  30%
+how many draws : 2-4"
+
+[node name="gewoehnlich" type="Button" parent="truhen"]
+light_mask = 3
+offset_left = 647.0
+offset_top = 143.0
+offset_right = 856.0
+offset_bottom = 301.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_oudrr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_f2sjb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jghcc")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_g411n")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7508w")
+icon = ExtResource("6_oudrr")
+expand_icon = true
+
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="truhen/Buy" to="." method="_on_buy_pressed"]
